@@ -59,7 +59,7 @@ function create() {
         { x: 220, y: 350 }, { x: 280, y: 350 }, 
         { x: 420, y: 400 },{ x: 465, y: 400 }, { x: 510, y: 400 },
         { x: 620, y: 320 }, { x: 660, y: 320 }, { x: 700, y: 320 }, { x: 740, y: 320 },
-        { x: 620, y: 520 }, { x: 660, y: 520 }, { x: 700, y: 520 }, { x: 740, y: 520 },
+        { x: 590, y: 520 }, { x: 650, y: 520 }, { x: 710, y: 520 }, { x: 760, y: 520 },
         { x: 1015, y: 150 }, { x: 1230, y: 550 },{ x: 1270, y: 550 },{ x: 1310, y: 550 },
         { x: 1650, y: 200 },  { x: 1700, y: 200 }, { x: 1600, y: 200 },
     ];
@@ -99,8 +99,8 @@ function create() {
     }
 
     //Score
-    scoreText = game.add.text(20, 20, "Coins: " + score, { font: '64px Courier', fontSize: '20px', fill: '#ffffff' })
-    scoreText.setShadow(1, 1, '#000000', 0);
+    scoreText = game.add.text(50, 20, "Coins: " + score, { font: '64px Courier', fontSize: '20px', fill: '#ffffff' })
+    scoreText.setShadow(1, 1, '#000000', 0, 2, 2, '#000000', 0, 3, 3, '#000000', 0);
     Timer = game.add.text(500, 20, "Time : " + (Date.now() - TimeWhenLevelStarted), { font: '64px Courier', fontSize: '20px', fill: '#ffffff' })
     Timer.setShadow(1, 1, '#000000', 0);
 
