@@ -12,7 +12,7 @@ function preload() {
 
 function create() {
     //sound
-    jump = game.add.audio('jump', 0.5);
+    jump = game.add.audio('jump', 0.2);
 
     //Background
     sky = game.add.tileSprite(0, 0, 1000, 600, 'sky');
