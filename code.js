@@ -51,9 +51,9 @@ function create() {
     coinGroup.enableBody = true;
 
     var coinData = [
-        { x: 200, y: 350 },
-        { x: 250, y: 350 }, { x: 300, y: 350 }, { x: 420, y: 400 },
-        { x: 450, y: 400 }, { x: 340, y: 400 }, { x: 510, y: 400 },
+        { x: 220, y: 350 },
+        { x: 250, y: 350 }, { x: 280, y: 350 }, { x: 420, y: 400 },
+        { x: 450, y: 400 }, { x: 440, y: 400 }, { x: 510, y: 400 },
         { x: 700, y: 400 }, { x: 850, y: 0 }, { x: 950, y: 0 },
         { x: 1050, y: 0 }, { x: 1175, y: 0 }, { x: 1375, y: 0 }
     ];
@@ -87,7 +87,7 @@ function create() {
         goom.animations.add('left', [0, 1], 10, true);
         goom.animations.add('right', [2, 3], 10, true);
         goom.body.velocity.x = Math.random() * 10 + 20; 
-        if (goom.body.velocity.x = 0) goom.body.velocity.x = Math.random() * -10 + -20;
+        if (Math.random() < 0.5) goom.body.velocity.x *= -1;
     }
 
     //Score
