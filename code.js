@@ -5,14 +5,19 @@ var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup, sco
 var TimeWhenLevelStarted = Date.now()
 
 function preload() {
-    //image
+    //Background
     game.load.image("sky", "assets/images/sky.png");
     game.load.image("mountain", "assets/images/mountain.png");
     game.load.image("floor", "assets/images/floor.png");
+
+    //Platform
     game.load.image("platform-3", "assets/images/platform-3.png");
     game.load.image("platform-4", "assets/images/platform-4.png");
     game.load.image("platform-5", "assets/images/platform-5.png");
+    
+    //Wall
     game.load.image("pipe", "assets/images/wall1.png");
+    game.load.image("pipe2", "assets/images/wall2.png");
 
     //Sprite Sheet
     game.load.spritesheet("coin", "assets/images/coin.png", 31, 31);
@@ -99,6 +104,7 @@ function create() {
     wallGroup.enableBody = true;
 
     wallGroup.create(20, 515, 'pipe');
+    wallGroup.create(300, 515, 'pipe2');
 
     //Song
     song.play();
@@ -149,7 +155,7 @@ function FormatTime(Seconds) {
     let Hours = (Minutes - Minutes % 60) / 60;
     Minutes = Minutes - Hours * 60;
     Hours = FormatInt(Hours)
-    Minutes = FormatInt(Minutes) 
+    Minutes = FormatInt(Minutes)
     Seconds = FormatInt(Math.floor(Seconds))
     return {
         Hours,
@@ -168,11 +174,13 @@ function update() {
 
     //enemy
     goomGroup.forEach(function (goom) {
-        if (goom.body.velocity.x <= 0) {
-            goom.animations.play('left');
-        } else {
-            goom.animations.play('right');
-        }
+        let Position = goom.body.position
+        setTimeout(function(){ 
+            let CurrentPosition = goom.body.position; 
+            if (Position === CurrentPosition) {
+                enemy.body.velocity.x *= -1;
+            }
+        },3000);
     });
     function roamingPlatform(enemy, platform) {
         // if enemy about to go over right or left edge of platform
