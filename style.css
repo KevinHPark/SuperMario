@@ -29,5 +29,6 @@ h2 {
 }
 h3 {
     font-family: 'Corben', cursive;
-    text-shadow: 1px 1px 0 #ffffff, 2px 2px 0 #ffffff ;
+    text-shadow: 1px 1px 0 #ffffff;
+    text-align: center;
 }
