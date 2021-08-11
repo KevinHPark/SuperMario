@@ -67,11 +67,12 @@ function create() {
 
     for (var i = 0; i < 25; i++) {
         var goom = goomGroup.create(i * 200 + 100, 0, 'goom');
-        goom.body.gravity.y = 400;
+        goom.body.gravity.y = 300;
         goom.anchor.set(0.5, 0.5);
+        goom.body.collideWorldBounds = true;
         goom.animations.add('left', [0, 1], 10, true);
         goom.animations.add('right', [2, 3], 10, true);
-        cat.body.velocity.x = Math.random() * 50 + 100; // between 100-150
+        goom.body.velocity.x = Math.random() * 50 + 100; // between 100-150
         if (Math.random() < 0.5) goom.body.velocity.x *= -1; // reverse direction
     }
 
