@@ -46,6 +46,7 @@ function create() {
         var coin = coinGroup.create(coinData[i].x, coinData[i].y, 'coin');
         coin.body.gravity.y = 400;
         coin.anchor.set(0.5, 0.5);
+        coin.animations.add('spin', [0, 1, 2, 3, 4, 5], 10, true);
         coin.play();
     }
 
@@ -82,8 +83,6 @@ function create() {
     player.animations.add('left', [0, 1, 2, 3], 10, true);
     player.animations.add('right', [5, 6, 7, 8], 10, true);
     player.animations.add('turn', [4], 20, true);
-
-    player.animations.add('spin', [0, 1, 2, 3, 4, 5], 10, true);
 }
 
 function update() {
