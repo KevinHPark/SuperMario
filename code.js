@@ -59,7 +59,7 @@ function create() {
         { x: 420, y: 400 },{ x: 465, y: 400 }, { x: 510, y: 400 },
         { x: 620, y: 320 }, { x: 660, y: 320 }, { x: 700, y: 320 }, { x: 740, y: 320 },
         { x: 620, y: 520 }, { x: 660, y: 520 }, { x: 700, y: 520 }, { x: 740, y: 520 },
-        { x: 1030, y: 300 }, { x: 1375, y: 0 }
+        { x: 1010, y: 250 }, { x: 1375, y: 0 }
     ];
 
     for (var i = 0; i < coinData.length; i++) {
@@ -79,8 +79,8 @@ function create() {
         { x: 250, y: 350 },
         { x: 250, y: 500 }, 
         { x: 480, y: 400 }, { x: 480, y: 500 }, 
-        { x: 700, y: 320 }, { x: 800, y: 500 }, 
-        { x: 1030, y: 500 }, { x: 1375, y: 500 }
+        { x: 700, y: 320 }, { x: 800, y: 500 }, { x: 700, y: 500 }, 
+        { x: 1010, y: 500 }, { x: 1375, y: 500 }
     ];
 
     for (var i = 0; i < goomData.length; i++) {
@@ -153,7 +153,7 @@ function create() {
     //camera
     game.world.setBounds(0, 0, 5000, 600);
     game.camera.follow(player);
-    game.add.text(1030, 300, 'You got this!', { fill: 'white' });
+    game.add.text(1010, 300, 'You got this!', { fill: 'white' });
 
     //input
     arrowKey = game.input.keyboard.createCursorKeys();
