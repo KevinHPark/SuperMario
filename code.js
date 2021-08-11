@@ -23,7 +23,6 @@ function create() {
 
     // add ground platform
     var ground = platformGroup.create(0, game.world.height - 25, 'floor');
-    ground.scale.setTo(10, 1); // 10 * 500 = 5000 pixels wide
 
     platformGroup.setAll('body.immovable', true);
     
