@@ -1,3 +1,5 @@
+const { Time } = require("phaser-ce");
+
 var game = new Phaser.Game(1000, 580, Phaser.AUTO, 'superMario', { preload: preload, create: create, update: update });
 
 var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup, score = 0, scoreText, coinSong, enemy, Timer, Lives = 3, deathSong;
@@ -52,8 +54,8 @@ function create() {
     // JSON array listing coin positions
     var coinData = [
         { x: 200, y: 350 },
-        { x: 250, y: 350 }, { x: 300, y: 350 }, { x: 450, y: 415 },
-        { x: 500, y: 415 }, { x: 550, y: 415 }, { x: 600, y: 415 },
+        { x: 250, y: 350 }, { x: 300, y: 350 }, { x: 320, y: 410 },
+        { x: 350, y: 410 }, { x: 380, y: 410 }, { x: 410, y: 410 },
         { x: 700, y: 400 }, { x: 850, y: 0 }, { x: 950, y: 0 },
         { x: 1050, y: 0 }, { x: 1175, y: 0 }, { x: 1375, y: 0 }
     ];
