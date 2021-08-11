@@ -59,9 +59,7 @@ function create() {
 
 function update() {
     game.physics.arcade.collide(player, platformGroup);
-    if (player.body.collideWorldBounds = true){
-        song.play();
-    }
+    
     if (arrowKey.right.isDown) {
         player.body.velocity.x = 200;
         player.animations.play('right');
@@ -78,6 +76,7 @@ function update() {
         // make player jump
         player.body.velocity.y = -300;
         jump.play();
+        song.play();
     }
     sky.tilePosition.x = game.camera.x * -0.2;
     mountain.tilePosition.x = game.camera.x * -0.3;
