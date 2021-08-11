@@ -126,7 +126,8 @@ function update() {
     //Follow Cam
     sky.tilePosition.x = game.camera.x * -0.2;
     mountain.tilePosition.x = game.camera.x * -0.3;
-    scoreText.Position.x = game.camera.fixedToCamera;
+    scoreText.tilePosition.x = game.camera.fixedToCamera;
+
 }
 
 // add custom functions (for collisions, etc.)
