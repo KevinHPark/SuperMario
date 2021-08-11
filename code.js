@@ -86,7 +86,7 @@ function create() {
 }
 
 function update() {
-    game.physics.arcade.collide(player, platformGroup && coinGroup);
+    game.physics.arcade.collide(player, platformGroup, coinGroup);
 
 
 
@@ -106,7 +106,6 @@ function update() {
         // make player jump
         player.body.velocity.y = -300;
         jump.play();
-        song.play();
     }
     sky.tilePosition.x = game.camera.x * -0.2;
     mountain.tilePosition.x = game.camera.x * -0.3;
