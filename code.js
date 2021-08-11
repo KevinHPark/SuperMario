@@ -211,7 +211,7 @@ function update() {
     let FormattedTime = FormatTime((Date.now() - TimeWhenLevelStarted) / 1000);
     Timer.text = "Time : " + FormattedTime.Hours + ":" + FormattedTime.Minutes + ":" + FormattedTime.Seconds;
     scoreText.x = game.camera.x;
-    Timer.x = (game.camera.x + 500)-(Timer.displayWidth()/2);
+    Timer.x = (game.camera.x + 500)-(Timer.width/2);
 }
 
 // add custom functions (for collisions, etc.)
