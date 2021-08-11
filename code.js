@@ -20,7 +20,7 @@ function create() {
     //sound
     jump = game.add.audio('jump', 0.05);
     song = game.add.audio('song', 0.1);
-    coinSong = game.add.audio('coinSong', 0.05);
+    coinSong = game.add.audio('coinSound', 0.05);
 
     //Background
     sky = game.add.tileSprite(0, 0, 1000, 600, 'sky');
@@ -101,7 +101,7 @@ function update() {
 
     function collectCoin(player, coin) {
         coin.kill();
-        score++;
+        gameText = score++; //urmom
         coinSong.play();
     }
 
