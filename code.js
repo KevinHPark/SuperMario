@@ -44,7 +44,7 @@ function create() {
 
     // JSON array listing coin positions
     var coinData = [
-        { x: 75, y: 0 }, { x: 150, y: 0 }, { x: 250, y: 250 },
+        { x: 100, y: 0 }, { x: 150, y: 0 }, { x: 250, y: 250 },
         { x: 275, y: 0 }, { x: 350, y: 0 }, { x: 450, y: 300 },
         { x: 475, y: 0 }, { x: 537, y: 0 }, { x: 650, y: 0 },
         { x: 700, y: 400 }, { x: 850, y: 0 }, { x: 950, y: 0 },
@@ -59,13 +59,13 @@ function create() {
         coin.animations.play('spin');
     }
 
-        
-        //enemy
-        goomGroup = game.add.group()
-        goomGroup.enableBody = true;
+
+    //enemy
+    goomGroup = game.add.group()
+    goomGroup.enableBody = true;
 
     for (var i = 0; i < 25; i++) {
-        var goom = goomGroup.create(i * 200 + 100, 0, 'goom');
+        var goom = goomGroup.create(i * 200 + 200, 0, 'goom');
         goom.body.gravity.y = 300;
         goom.anchor.set(0.5, 0.5);
         goom.body.collideWorldBounds = true;
@@ -86,19 +86,19 @@ function create() {
     coin.animations.add('spin', [0, 1, 2, 3, 4, 5], 10, true);
     coin.animations.play('spin');
 
-     // PLATFORMS
-     platformGroup = game.add.group();
-     platformGroup.enableBody = true;
- 
-     platformGroup.create(200, 480, 'platform-3');
-     platformGroup.create(400, 420, 'platform-4');
-     platformGroup.create(600, 360, 'platform-5');
+    // PLATFORMS
+    platformGroup = game.add.group();
+    platformGroup.enableBody = true;
 
-     // Walls
-     wallGroup = game.add.group();
-     wallGroup.enableBody = true;
- 
-     wallGroup.create(20, 530, 'pipe');
+    platformGroup.create(200, 480, 'platform-3');
+    platformGroup.create(400, 420, 'platform-4');
+    platformGroup.create(600, 360, 'platform-5');
+
+    // Walls
+    wallGroup = game.add.group();
+    wallGroup.enableBody = true;
+
+    wallGroup.create(20, 520, 'pipe');
 
     //Song
     song.play();
@@ -119,7 +119,7 @@ function create() {
     player.health = 3;
     player.maxhealth = 3;
 
-    
+
 
     //camera
     game.world.setBounds(0, 0, 5000, 600);
@@ -153,7 +153,7 @@ function FormatTime(Seconds) {
     Seconds = FormatInt(Seconds)
     return {
         Hours,
-        Minutes, 
+        Minutes,
         Seconds,
     };
 }
@@ -168,8 +168,11 @@ function update() {
 
     //enemy
     goomGroup.forEach(function (goom) {
-        if (goom.body.velocity.x < 0) goom.animations.play('left');
-        else goom.animations.play('right');
+        if (goom.body.velocity.x <= 0) {
+            goom.animations.play('left');
+        } else {
+            goom.animations.play('right');
+        }
     });
     function roamingPlatform(enemy, platform) {
         // if enemy about to go over right or left edge of platform
@@ -211,7 +214,7 @@ function update() {
     let FormattedTime = FormatTime((Date.now() - TimeWhenLevelStarted) / 1000);
     Timer.text = "Time : " + FormattedTime.Hours + ":" + FormattedTime.Minutes + ":" + FormattedTime.Seconds;
     scoreText.x = game.camera.x;
-    Timer.x = (game.camera.x + 500)-(Timer.width/2);
+    Timer.x = (game.camera.x + 500) - (Timer.width / 2);
 }
 
 // add custom functions (for collisions, etc.)
