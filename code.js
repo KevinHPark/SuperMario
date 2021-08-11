@@ -51,7 +51,7 @@ function create() {
     song = game.add.audio('song', 0.1);
     coinSong = game.add.audio('coinSound', 0.05);
     deathSong = game.add.audio('death', 0.1);
-    winsSound= game.add.audio('win', 0.1);
+    winSound= game.add.audio('win', 0.1);
 
     //Background
     sky = game.add.tileSprite(0, 0, 1000, 600, 'sky');
@@ -135,7 +135,7 @@ function create() {
     flagGroup = game.add.group();
     flagGroup.enableBody = true;
 
-    flagGroup.create(4700, 236, 'flag');
+    flagGroup.create(4700, 280, 'flag');
 
     // Walls
     wallGroup = game.add.group();
