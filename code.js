@@ -2,7 +2,7 @@
 
 var game = new Phaser.Game(1000, 580, Phaser.AUTO, 'superMario', { preload: preload, create: create, update: update });
 
-var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup, score = 0, scoreText, coinSong, enemy, Timer, Lives = 3, deathSong;
+var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup, score = 0, scoreText, coinSong, enemy, Timer, Lives = 3, deathSong, winSound;
 
 var TimeWhenLevelStarted = Date.now()
 
@@ -24,6 +24,9 @@ function preload() {
     game.load.image("stair2", "assets/images/stair2.png");
     game.load.image("stair3", "assets/images/stair3.png");
     game.load.image("stair4", "assets/images/stair4.png");
+    game.load.image("stair5", "assets/images/stair5.png");
+    game.load.image("stair6", "assets/images/stair6.png");
+    game.load.image("stair7", "assets/images/stair7.png");
     game.load.image("wall", "assets/images/wall3.png");
 
     //Sprite Sheet
@@ -36,6 +39,7 @@ function preload() {
     game.load.audio("jump", "assets/sounds/Jump.mp3");
     game.load.audio("song", "assets/sounds/Song.mp3");
     game.load.audio("death", "assets/sounds/Death.mp3");
+    game.load.audio("win", "assets/sounds/Win.mp3");
 }
 
 function create() {
@@ -43,7 +47,8 @@ function create() {
     jump = game.add.audio('jump', 0.05);
     song = game.add.audio('song', 0.1);
     coinSong = game.add.audio('coinSound', 0.05);
-    deathSong = game.add.audio('death', 0.05);
+    deathSong = game.add.audio('death', 0.1);
+    winsSound= game.add.audio('win', 0.1);
 
     //Background
     sky = game.add.tileSprite(0, 0, 1000, 600, 'sky');
@@ -159,6 +164,16 @@ function create() {
     wallGroup.create(1772, 435, 'stair3');
     wallGroup.create(1814, 475, 'stair2');
     wallGroup.create(1856, 515, 'stair1');
+
+    //Last Staircase
+    wallGroup.create(3800, 515, 'stair1');
+    wallGroup.create(3842, 475, 'stair2');
+    wallGroup.create(3884, 435, 'stair3');
+    wallGroup.create(3926, 395, 'stair4');
+    wallGroup.create(3968, 355, 'stair5');
+    wallGroup.create(4010, 315, 'stair6');
+    wallGroup.create(4052, 275, 'stair7');
+    wallGroup.create(4094, 236, 'wall');
 
     //Song
     song.loop = true;
