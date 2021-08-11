@@ -29,6 +29,8 @@ function preload() {
     game.load.image("stair7", "assets/images/stair7.png");
     game.load.image("wall", "assets/images/wall3.png");
 
+    game.load.image("flag", "assets/images/flag.png");
+
     //Sprite Sheet
     game.load.spritesheet("coin", "assets/images/coin.png", 31, 31);
     game.load.spritesheet("mario", "assets/images/mario.png", 32, 48);
@@ -40,6 +42,7 @@ function preload() {
     game.load.audio("song", "assets/sounds/Song.mp3");
     game.load.audio("death", "assets/sounds/Death.mp3");
     game.load.audio("win", "assets/sounds/Win.mp3");
+
 }
 
 function create() {
@@ -128,6 +131,12 @@ function create() {
     platformGroup.create(2600, 220, 'platform-3');
     platformGroup.create(2650, 180, 'platform-3');
 
+    //Flag
+    flagGroup = game.add.group();
+    flagGroup.enableBody = true;
+
+    flagGroup.create(4700, 236, 'flag');
+
     // Walls
     wallGroup = game.add.group();
     wallGroup.enableBody = true;
@@ -174,6 +183,7 @@ function create() {
     wallGroup.create(4410, 315, 'stair6');
     wallGroup.create(4452, 275, 'stair7');
     wallGroup.create(4494, 236, 'wall');
+    wallGroup.create(4534, 236, 'wall');
 
     //Song
     song.loop = true;
@@ -184,6 +194,7 @@ function create() {
 
     platformGroup.setAll('body.immovable', true);
     wallGroup.setAll('body.immovable', true);
+    flagGroup.setAll('body.immovable', true)
 
     //Player
     game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -242,12 +253,19 @@ function update() {
     game.physics.arcade.collide(player, coinGroup, collectCoin, null, this);
     game.physics.arcade.collide(player, goomGroup, playerDeath, null, null);
 
+    game.physics.arcade.collide(player, flagGroup, win, null, null);
+
     function playerDeath(player, goom){
         goom.kill();
         deathSong.play();
         game.camera.shake(0.02, 250);
         player.kill();
         song.stop();
+    }
+
+    function win(player, flag){
+        song.stop();
+        winSound.play();
     }
 
     //enemy
