@@ -6,7 +6,7 @@ function preload() {
     game.load.spritesheet("mario", "assets/images/mario.png", 32, 48);
     game.load.image("sky", "assets/images/sky.png");
     game.load.image("mountain", "assets/images/mountain.png");
-    // game.load.image("floor", "assets/images/floor.png");
+    game.load.image("floor", "assets/images/floor.png");
 }
 
 function create() {
@@ -16,6 +16,14 @@ function create() {
     sky.fixedToCamera = true;
     mountain.fixedToCamera = true;
     // floor = game.add.sprite(-110, 0, 1912, 110, 'floor');
+
+    // PLATFORMS
+    platformGroup = game.add.group();
+    platformGroup.enableBody = true;
+
+    // add ground platform
+    var ground = platformGroup.create(0, game.world.height - 25, 'floor');
+    ground.scale.setTo(10, 1); // 10 * 500 = 5000 pixels wide
     
     game.physics.startSystem(Phaser.Physics.ARCADE);
     player = game.add.sprite(25, 300, "mario");
@@ -42,6 +50,7 @@ function create() {
 }
 
 function update() {
+    game.physics.arcade.collide(player, platformGroup);
     if (arrowKey.right.isDown) {
         player.body.velocity.x = 200;
         player.animations.play('right');
@@ -54,7 +63,7 @@ function update() {
         player.body.velocity.x = 0;
         player.animations.play('turn');
     }
-    if (arrowKey.up.justDown && player.body.touching.down) {
+    if (arrowKey.up.isDown && player.body.touching.down) {
         // make player jump
         player.body.velocity.y = -300;
     }
