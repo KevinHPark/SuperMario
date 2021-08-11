@@ -48,7 +48,6 @@ function create() {
         coin.anchor.set(0.5, 0.5);
     }
     coin.animations.add('spin', [0, 1, 2, 3, 4, 5], 10, true);
-    coin.animations.play('spin');
 
     // PLATFORMS
     platformGroup = game.add.group();
@@ -92,7 +91,7 @@ function update() {
     game.physics.arcade.collide(player, platformGroup);
     game.physics.arcade.collide(coinGroup, platformGroup);
 
-
+    coin.animations.play('spin');
 
     if (arrowKey.right.isDown) {
         player.body.velocity.x = 200;
