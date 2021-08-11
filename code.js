@@ -1,6 +1,6 @@
 var game = new Phaser.Game(1000, 580, Phaser.AUTO, 'superMario', { preload: preload, create: create, update: update });
 
-var player, arrowKeys, sky, mountain, floor;
+var player, arrowKeys, sky, mountain, floor, platformGroup;
 
 function preload() {
     game.load.spritesheet("mario", "assets/images/mario.png", 32, 48);
@@ -54,9 +54,9 @@ function update() {
         player.body.velocity.x = 0;
         player.animations.play('turn');
     }
-
-    if (arrowKey.up.isDown) {
-        player.body.velocity.y = -400;
+    if (arrowKey.up.justDown && player.body.touching.down) {
+        // make player jump
+        player.body.velocity.y = -300;
     }
     sky.tilePosition.x = game.camera.x * -0.2;
     mountain.tilePosition.x = game.camera.x * -0.3;
