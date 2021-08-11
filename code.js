@@ -13,12 +13,14 @@ function preload() {
     game.load.image("platform-4", "assets/images/platform-4.png");
     game.load.image("platform-5", "assets/images/platform-5.png");
     game.load.spritesheet("coin", "assets/images/coin.png", 31, 31);
+    game.load.audio("coinSound", "assets/sounds/Coin.mp3");
 }
 
 function create() {
     //sound
     jump = game.add.audio('jump', 0.05);
     song = game.add.audio('song', 0.1);
+    coinSong = game.add.audio('coinSong', 0.05);
 
     //Background
     sky = game.add.tileSprite(0, 0, 1000, 600, 'sky');
@@ -51,7 +53,7 @@ function create() {
     }
 
     //Score
-    scoreText = add.text(20,20, "Coins: " + score, { fontSize: '20px', fill: '#222222' })
+    scoreText = game.add.text(20,20, "Coins: " + score, { fontSize: '20px', fill: '#222222' })
 
     // PLATFORMS
     platformGroup = game.add.group();
@@ -100,6 +102,7 @@ function update() {
     function collectCoin(player, coin) {
         kill(coin)
         
+        coinSong.play();
     }
 
     if (arrowKey.right.isDown) {
