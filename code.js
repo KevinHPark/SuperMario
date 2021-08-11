@@ -80,7 +80,7 @@ function create() {
     ];
 
     for (var i = 0; i < goomData.length; i++) {
-        var goom = goomGroup.create(i * 200 + 200, 0, 'goom');
+        var goom = goomGroup.create(goomData[i].x, goomData[i].y, 'goom');
         goom.body.gravity.y = 300;
         goom.anchor.set(0.5, 0.5);
         goom.body.collideWorldBounds = true;
