@@ -8,11 +8,13 @@ function preload() {
     game.load.image("mountain", "assets/images/mountain.png");
     game.load.image("floor", "assets/images/floor.png");
     game.load.audio("jump", "assets/sounds/Jump.mp3");
+    game.load.audio("song", "assets/sounds/Song.mp3");
 }
 
 function create() {
     //sound
-    jump = game.add.audio('jump', 0.2);
+    jump = game.add.audio('jump', 0.1);
+    song = game.add.audio('song', 0.1);
 
     //Background
     sky = game.add.tileSprite(0, 0, 1000, 600, 'sky');
@@ -57,6 +59,7 @@ function create() {
 
 function update() {
     game.physics.arcade.collide(player, platformGroup);
+    song.play();
     if (arrowKey.right.isDown) {
         player.body.velocity.x = 200;
         player.animations.play('right');
