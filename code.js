@@ -124,6 +124,7 @@ function create() {
     platformGroup.setAll('body.immovable', true);
     wallGroup.setAll('body.immovable', true);
 
+    //Player
     game.physics.startSystem(Phaser.Physics.ARCADE);
     player = game.add.sprite(25, 300, "mario");
     player.anchor.set(0.5, 0.5);
@@ -179,7 +180,7 @@ function update() {
     game.physics.arcade.collide(goomGroup, wallGroup);
     game.physics.arcade.collide(player, wallGroup);
     game.physics.arcade.collide(player, coinGroup, collectCoin, null, this);
-    // game.physics.arcade.collide(player, coinGroup, death, null, this);
+    game.physics.arcade.collide(player, coinGroup, death, null, this);
     //game.camera.shake(0.02, 250);
 
     //enemy
@@ -208,6 +209,11 @@ function update() {
         coinSong.play();
     }
 
+    function death(player, goom) {
+        game.camera.shake(0.02, 250);
+        player.reset(25, 300, 100);
+        goom.kill();
+    }
 
     //User input
     if (arrowKey.right.isDown) {
