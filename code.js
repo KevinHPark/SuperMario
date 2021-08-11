@@ -49,8 +49,8 @@ function create() {
 
     // JSON array listing coin positions
     var coinData = [
-        { x: 100, y: 0 }, { x: 150, y: 0 }, { x: 200, y: 250 },
-        { x: 250, y: 0 }, { x: 300, y: 0 }, { x: 350, y: 300 },
+        { x: 200, y: 350 },
+        { x: 250, y: 350 }, { x: 300, y: 350 }, 
         { x: 475, y: 0 }, { x: 537, y: 0 }, { x: 650, y: 0 },
         { x: 700, y: 400 }, { x: 850, y: 0 }, { x: 950, y: 0 },
         { x: 1050, y: 0 }, { x: 1175, y: 0 }, { x: 1375, y: 0 }
@@ -69,7 +69,15 @@ function create() {
     goomGroup = game.add.group()
     goomGroup.enableBody = true;
 
-    for (var i = 0; i < 25; i++) {
+    var goomData = [
+        { x: 200, y: 350 },
+        { x: 250, y: 350 }, { x: 300, y: 350 }, 
+        { x: 475, y: 0 }, { x: 537, y: 0 }, { x: 650, y: 0 },
+        { x: 700, y: 400 }, { x: 850, y: 0 }, { x: 950, y: 0 },
+        { x: 1050, y: 0 }, { x: 1175, y: 0 }, { x: 1375, y: 0 }
+    ];
+
+    for (var i = 0; i < goomData.length; i++) {
         var goom = goomGroup.create(i * 200 + 200, 0, 'goom');
         goom.body.gravity.y = 300;
         goom.anchor.set(0.5, 0.5);
@@ -171,8 +179,9 @@ function update() {
     game.physics.arcade.collide(goomGroup, wallGroup);
     game.physics.arcade.collide(player, wallGroup);
     game.physics.arcade.collide(player, coinGroup, collectCoin, null, this);
-    
+    // game.physics.arcade.collide(player, coinGroup, death, null, this);
     //game.camera.shake(0.02, 250);
+
     //enemy
     goomGroup.forEach(function (goom) {
         if (goom.body.velocity.x >= -1 && goom.body.velocity <= 1) {
@@ -197,8 +206,9 @@ function update() {
         coin.kill();
         scoreText.text = "Coins: " + score++
         coinSong.play();
-
     }
+
+
     //User input
     if (arrowKey.right.isDown) {
         player.body.velocity.x = 200;
