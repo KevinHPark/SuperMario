@@ -17,7 +17,7 @@ function preload() {
     //Sprite Sheet
     game.load.spritesheet("coin", "assets/images/coin.png", 31, 31);
     game.load.spritesheet("mario", "assets/images/mario.png", 32, 48);
-    game.load.spritesheet("enemy", "assets/images/enemy.png", 31, 31);
+    game.load.spritesheet("goom", "assets/images/enemy.png", 31, 31);
 
     //Audio
     game.load.audio("coinSound", "assets/sounds/Coin.mp3");
@@ -62,17 +62,17 @@ function create() {
     }
 
     //enemy
-    enemyGroup = game.add.group()
-    enemyGroup.enabledBody = true;
+    goomGroup = game.add.group()
+    goomGroup.enabledBody = true;
 
     for (var i = 0; i < 25; i++) {
-        var enemy = enemyGroup.create(i * 200 + 100, 0, 'enemy');
-        enemy.body.gravity.y = 400;
-        enemy.anchor.set(0.5, 0.5);
-        enemy.animations.add('left', [0, 1], 10, true);
-        enemy.animations.add('right', [2, 3], 10, true);
+        var goom = goomGroup.create(i * 200 + 100, 0, 'goom');
+        goom.body.gravity.y = 400;
+        goom.anchor.set(0.5, 0.5);
+        goom.animations.add('left', [0, 1], 10, true);
+        goom.animations.add('right', [2, 3], 10, true);
         cat.body.velocity.x = Math.random() * 50 + 100; // between 100-150
-        if (Math.random() < 0.5) cat.body.velocity.x *= -1; // reverse direction
+        if (Math.random() < 0.5) goom.body.velocity.x *= -1; // reverse direction
     }
 
     //Score
@@ -121,14 +121,14 @@ function create() {
 function update() {
     game.physics.arcade.collide(player, platformGroup);
     game.physics.arcade.collide(coinGroup, platformGroup);
-    game.physics.arcade.collide(enemy, platformGroup);
+    game.physics.arcade.collide(goom, platformGroup);
 
     game.physics.arcade.collide(player, coinGroup, collectCoin, null, this);
 
     //enemy
-    enemyGroup.forEach(function (enemy) {
-        if (enemy.body.velocity.x < 0) enemy.animations.play('left');
-        else enemy.animations.play('right');
+    goomGroup.forEach(function (goom) {
+        if (goom.body.velocity.x < 0) goom.animations.play('left');
+        else goom.animations.play('right');
     });
 
     function collectCoin(player, coin) {
