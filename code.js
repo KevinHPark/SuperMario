@@ -59,7 +59,9 @@ function create() {
 
 function update() {
     game.physics.arcade.collide(player, platformGroup);
-    song.play();
+    if (player.body.collideWorldBounds = true){
+        song.play();
+    }
     if (arrowKey.right.isDown) {
         player.body.velocity.x = 200;
         player.animations.play('right');
