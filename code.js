@@ -59,7 +59,7 @@ function create() {
         { x: 420, y: 400 },{ x: 465, y: 400 }, { x: 510, y: 400 },
         { x: 620, y: 320 }, { x: 660, y: 320 }, { x: 700, y: 320 }, { x: 740, y: 320 },
         { x: 620, y: 520 }, { x: 660, y: 520 }, { x: 700, y: 520 }, { x: 740, y: 520 },
-        { x: 1050, y: 320 }, { x: 1375, y: 0 }
+        { x: 1050, y: 300 }, { x: 1375, y: 0 }
     ];
 
     for (var i = 0; i < coinData.length; i++) {
@@ -153,7 +153,7 @@ function create() {
     //camera
     game.world.setBounds(0, 0, 5000, 600);
     game.camera.follow(player);
-    game.add.text(1000, 300, 'You got this!', { fill: 'white' });
+    game.add.text(1050, 300, 'You got this!', { fill: 'white' });
 
     //input
     arrowKey = game.input.keyboard.createCursorKeys();
