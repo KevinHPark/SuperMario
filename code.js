@@ -1,15 +1,19 @@
 var game = new Phaser.Game(1000, 580, Phaser.AUTO, 'superMario', { preload: preload, create: create, update: update });
 
-var player, arrowKeys, sky, mountain, floor, platformGroup;
+var player, arrowKeys, sky, mountain, floor, platformGroup, jump;
 
 function preload() {
     game.load.spritesheet("mario", "assets/images/mario.png", 32, 48);
     game.load.image("sky", "assets/images/sky.png");
     game.load.image("mountain", "assets/images/mountain.png");
     game.load.image("floor", "assets/images/floor.png");
+    game.load.audio("jump", "assets/sounds/jump.mp3");
 }
 
 function create() {
+    //sound
+    jump = game.add.audio('jump', 0.5);
+
     //Background
     sky = game.add.tileSprite(0, 0, 1000, 600, 'sky');
     mountain = game.add.tileSprite(0, 0, 1000, 600, 'mountain');
@@ -69,6 +73,7 @@ function update() {
     if (arrowKey.up.isDown && player.body.touching.down) {
         // make player jump
         player.body.velocity.y = -300;
+        jump.play();
     }
     sky.tilePosition.x = game.camera.x * -0.2;
     mountain.tilePosition.x = game.camera.x * -0.3;
