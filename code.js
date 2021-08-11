@@ -180,7 +180,7 @@ function update() {
             if (Position === CurrentPosition) {
                 goom.body.velocity.x *= -1;
             }
-        },3000);
+        },10000);
     });
     function roamingPlatform(enemy, platform) {
         // if enemy about to go over right or left edge of platform
