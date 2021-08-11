@@ -99,9 +99,9 @@ function create() {
     }
 
     //Score
-    scoreText = game.add.text(20, 20, "Coins: " + score, { font: '64px Courier', fontSize: '20px', fill: '#222222' })
+    scoreText = game.add.text(20, 20, "Coins: " + score, { font: '64px Courier', fontSize: '20px', fill: '#ffffff' })
     scoreText.setShadow(1, 1, '#000000', 2);
-    Timer = game.add.text(500, 20, "Time : " + (Date.now() - TimeWhenLevelStarted), { font: '64px Courier', fontSize: '20px', fill: '#222222' })
+    Timer = game.add.text(500, 20, "Time : " + (Date.now() - TimeWhenLevelStarted), { font: '64px Courier', fontSize: '20px', fill: '#ffffff' })
     Timer.setShadow(1, 1, '#000000', 2);
 
     coin.body.gravity.y = 400;
