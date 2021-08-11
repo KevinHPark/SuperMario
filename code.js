@@ -1,4 +1,4 @@
-const { Time } = require("phaser-ce");
+
 
 var game = new Phaser.Game(1000, 580, Phaser.AUTO, 'superMario', { preload: preload, create: create, update: update });
 
@@ -45,13 +45,11 @@ function create() {
     mountain = game.add.tileSprite(0, 0, 1000, 600, 'mountain');
     sky.fixedToCamera = true;
     mountain.fixedToCamera = true;
-    // floor = game.add.sprite(-110, 0, 1912, 110, 'floor');
 
     //Coins
     coinGroup = game.add.group();
     coinGroup.enableBody = true;
 
-    // JSON array listing coin positions
     var coinData = [
         { x: 200, y: 350 },
         { x: 250, y: 350 }, { x: 300, y: 350 }, { x: 320, y: 410 },
@@ -138,11 +136,6 @@ function create() {
     player.health = 3;
     player.maxhealth = 3;
 
-    // player.events.onKilled.add(function() {
-    //     explosion.reset(player.x, player.y);
-    //     explosion.animations.play('explode', 30, false, true);
-    // });
-
     //camera
     game.world.setBounds(0, 0, 5000, 600);
     game.camera.follow(player);
@@ -189,8 +182,6 @@ function update() {
     game.physics.arcade.collide(player, coinGroup, collectCoin, null, this);
     game.physics.arcade.collide(player, goomGroup, playerDeath, null, null);
 
-    //game.camera.shake(0.02, 250);
-
     function playerDeath(player, goom){
         goom.kill();
         deathSong.play();
@@ -211,10 +202,9 @@ function update() {
         }
     });
     function roamingPlatform(enemy, platform) {
-        // if enemy about to go over right or left edge of platform
         if (enemy.body.velocity.x > 0 && enemy.right > platform.right
             || enemy.body.velocity.x < 0 && enemy.left < platform.left) {
-            enemy.body.velocity.x *= -1; // reverse direction
+            enemy.body.velocity.x *= -1; 
         }
     }
 
@@ -253,5 +243,3 @@ function update() {
     scoreText.x = game.camera.x;
     Timer.x = (game.camera.x + 500) - (Timer.width / 2);
 }
-
-// add custom functions (for collisions, etc.)
