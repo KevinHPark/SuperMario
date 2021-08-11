@@ -114,7 +114,7 @@ function create() {
     wallGroup.enableBody = true;
 
     wallGroup.create(20, 515, 'pipe2');
-    wallGroup.create(500, 490, 'pipe2');
+    wallGroup.create(450, 490, 'pipe2');
 
     //Song
     song.loop = true;
