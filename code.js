@@ -63,7 +63,7 @@ function create() {
 
     //enemy
     goomGroup = game.add.group()
-    goomGroup.enabledBody = true;
+    
 
     for (var i = 0; i < 25; i++) {
         var goom = goomGroup.create(i * 200 + 100, 0, 'goom');
