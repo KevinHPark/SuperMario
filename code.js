@@ -174,13 +174,16 @@ function update() {
 
     //enemy
     goomGroup.forEach(function (goom) {
-        let Position = goom.body.position
-        setTimeout(function(){ 
-            let CurrentPosition = goom.body.position; 
-            if (Position === CurrentPosition) {
-                goom.body.velocity.x *= -1;
-            }
-        },10000);
+        if (goom.body.Velocity === 0) {
+            goom.body.velocity.x *= -1;
+        }
+        // let Position = goom.body.position
+        // setTimeout(function(){ 
+        //     let CurrentPosition = goom.body.position; 
+        //     if (Position === CurrentPosition) {
+        //         goom.body.velocity.x *= -1;
+        //     }
+        // },10000);
     });
     function roamingPlatform(enemy, platform) {
         // if enemy about to go over right or left edge of platform
