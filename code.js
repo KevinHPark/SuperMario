@@ -183,7 +183,7 @@ function create() {
     game.world.setBounds(0, 0, 5000, 600);
     game.camera.follow(player);
     game.add.text(1015, 300, 'You got this!', { fill: 'white' });
-    game.add.text(2100, 500, 'Dont fall!', { fill: 'white' });
+    game.add.text(2900, 300, 'Dont fall!', { fill: 'white' });
 
     //input
     arrowKey = game.input.keyboard.createCursorKeys();
