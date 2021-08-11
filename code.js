@@ -13,7 +13,7 @@ function create() {
     //Background
     sky = game.add.tileSprite(0, 0, 1000, 600, 'sky');
     mountain = game.add.tileSprite(0, 0, 1000, 600, 'mountain');
-    floor = game.add.image(-110, 0, 1912, 110, 'floor');
+    floor = game.add.sprite(-110, 0, 1912, 110, 'floor');
     
     game.physics.startSystem(Phaser.Physics.ARCADE);
     player = game.add.sprite(25, 300, "mario");
