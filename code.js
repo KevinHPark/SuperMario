@@ -23,6 +23,8 @@ function create() {
 
     // add ground platform
     var ground = platformGroup.create(0, game.world.height - 25, 'floor');
+    ground.fixedToCamera = true;
+
 
     platformGroup.setAll('body.immovable', true);
     
@@ -70,6 +72,7 @@ function update() {
     }
     sky.tilePosition.x = game.camera.x * -0.2;
     mountain.tilePosition.x = game.camera.x * -0.3;
+    ground.tilePosition.x = game.camera.x
     // player.animations.stop();
     // player.frame = 1;
 }
