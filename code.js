@@ -1,17 +1,19 @@
 var game = new Phaser.Game(1080, 720, Phaser.AUTO, 'superMario', { preload: preload, create: create, update: update });
 
-var player, arrowKeys, sky, mountain;
+var player, arrowKeys, sky, mountain, floor;
 
 function preload() {
     game.load.spritesheet("mario", "assets/images/mario.png", 32, 48);
     game.load.image("sky", "assets/images/sky.png");
     game.load.image("mountain", "assets/images/mountain.png");
+    game.load.image("floor", "assets/images/floor.png");
 }
 
 function create() {
     //Background
     sky = game.add.tileSprite(0, 0, 1000, 600, 'sky');
     mountain = game.add.tileSprite(0, 0, 1000, 600, 'mountain');
+    floor = game.add.tileSprite(0, 0, 1010, 600, 'floor');
     
     game.physics.startSystem(Phaser.Physics.ARCADE);
     player = game.add.sprite(25, 300, "mario");
