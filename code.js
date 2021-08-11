@@ -1,4 +1,4 @@
-
+// const { Time } = require("phaser-ce");
 
 var game = new Phaser.Game(1000, 580, Phaser.AUTO, 'superMario', { preload: preload, create: create, update: update });
 
@@ -86,8 +86,8 @@ function create() {
         goom.body.collideWorldBounds = true;
         goom.animations.add('left', [0, 1], 10, true);
         goom.animations.add('right', [2, 3], 10, true);
-        goom.body.velocity.x = Math.random() * 10 + 20; // between 100-150
-        if (Math.random() < 0.5) goom.body.velocity.x *= -1; // reverse direction
+        goom.body.velocity.x = Math.random() * 10 + 20; 
+        if (goom.body.velocity.x = 0) goom.body.velocity.x = Math.random() * -10 + -20;
     }
 
     //Score
