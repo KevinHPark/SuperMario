@@ -1,6 +1,6 @@
 var game = new Phaser.Game(1000, 580, Phaser.AUTO, 'superMario', { preload: preload, create: create, update: update });
 
-var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup, score = 0, scoreText, coinSong, enemy, Timer, Lives = 3;
+var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup, score = 0, scoreText, coinSong, enemy, Timer, Lives = 3, deathSong;
 
 var TimeWhenLevelStarted = Date.now()
 
@@ -28,6 +28,7 @@ function preload() {
     game.load.audio("coinSound", "assets/sounds/Coin.mp3");
     game.load.audio("jump", "assets/sounds/Jump.mp3");
     game.load.audio("song", "assets/sounds/Song.mp3");
+    game.load.audio("death", "assets/sounds/Death.mp3");
 }
 
 function create() {
@@ -35,6 +36,7 @@ function create() {
     jump = game.add.audio('jump', 0.05);
     song = game.add.audio('song', 0.1);
     coinSong = game.add.audio('coinSound', 0.05);
+    deathSong = game.add.audio('death', 0.05);
 
     //Background
     sky = game.add.tileSprite(0, 0, 1000, 600, 'sky');
@@ -134,7 +136,10 @@ function create() {
     player.health = 3;
     player.maxhealth = 3;
 
-
+    // player.events.onKilled.add(function() {
+    //     explosion.reset(player.x, player.y);
+    //     explosion.animations.play('explode', 30, false, true);
+    // });
 
     //camera
     game.world.setBounds(0, 0, 5000, 600);
@@ -180,8 +185,16 @@ function update() {
     game.physics.arcade.collide(goomGroup, wallGroup);
     game.physics.arcade.collide(player, wallGroup);
     game.physics.arcade.collide(player, coinGroup, collectCoin, null, this);
-    game.physics.arcade.collide(player, coinGroup, death, null, this);
+    game.physics.arcade.collide(player, goomGroup, playerDeath, null, null);
+
     //game.camera.shake(0.02, 250);
+
+    function playerDeath(player, goom){
+        goom.kill();
+        deathSong.play();
+        game.camera.shake(0.02, 250);
+        
+    }
 
     //enemy
     goomGroup.forEach(function (goom) {
@@ -209,11 +222,6 @@ function update() {
         coinSong.play();
     }
 
-    function death(player, goom) {
-        game.camera.shake(0.02, 250);
-        player.reset(25, 300, 100);
-        goom.kill();
-    }
 
     //User input
     if (arrowKey.right.isDown) {
