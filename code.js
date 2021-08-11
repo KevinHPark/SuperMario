@@ -83,6 +83,8 @@ function create() {
         { x: 480, y: 400 }, { x: 480, y: 500 }, 
         { x: 700, y: 320 }, { x: 800, y: 500 }, { x: 700, y: 500 }, 
         { x: 1015, y: 500 },{ x: 1300, y: 500 }, { x: 1650, y: 0 }, 
+        { x: 2650, y: 500},{ x: 2600, y: 500},{ x: 2700, y: 500},{ x: 2750, y: 500},
+        { x: 2000, y: 380 }, { x: 2200, y: 320 }, { x: 2400, y: 250 }, { x: 2400, y: 250 }
     ];
 
     for (var i = 0; i < goomData.length; i++) {
@@ -118,8 +120,6 @@ function create() {
     platformGroup.create(2000, 400, 'platform-3');
     platformGroup.create(2200, 340, 'platform-3');
     platformGroup.create(2400, 280, 'platform-5');
-    platformGroup.create(2600, 300, 'platform-3');
-    platformGroup.create(2650, 260, 'platform-3');
     platformGroup.create(2600, 220, 'platform-3');
     platformGroup.create(2650, 180, 'platform-3');
 
@@ -132,12 +132,12 @@ function create() {
     wallGroup.create(1950, 490, 'pipe2');
     wallGroup.create(2050, 490, 'pipe2');
 
-    wallGroup.create(3000, 235, 'wall');
-    wallGroup.create(3042, 235, 'wall');
-    wallGroup.create(3084, 235, 'wall');
-    wallGroup.create(3126, 235, 'wall');
-    wallGroup.create(3168, 235, 'wall');
-    wallGroup.create(3210, 235, 'wall');
+    wallGroup.create(3000, 236, 'wall');
+    wallGroup.create(3042, 236, 'wall');
+    wallGroup.create(3084, 236, 'wall');
+    wallGroup.create(3126, 236, 'wall');
+    wallGroup.create(3168, 236, 'wall');
+    wallGroup.create(3210, 236, 'wall');
 
     //Stairs
     wallGroup.create(900, 515, 'stair1');
