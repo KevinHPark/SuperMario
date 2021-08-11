@@ -1,0 +1,7 @@
+#superMario {
+    /* optional */
+    width: 1080px;
+    height: 720px;
+    margin: 0 auto;
+    border: 1px solid black;
+}
