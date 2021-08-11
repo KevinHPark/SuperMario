@@ -178,7 +178,7 @@ function update() {
         setTimeout(function(){ 
             let CurrentPosition = goom.body.position; 
             if (Position === CurrentPosition) {
-                enemy.body.velocity.x *= -1;
+                goom.body.velocity.x *= -1;
             }
         },3000);
     });
