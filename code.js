@@ -52,8 +52,8 @@ function create() {
 
     var coinData = [
         { x: 200, y: 350 },
-        { x: 250, y: 350 }, { x: 300, y: 350 }, { x: 320, y: 410 },
-        { x: 350, y: 410 }, { x: 380, y: 410 }, { x: 410, y: 410 },
+        { x: 250, y: 350 }, { x: 300, y: 350 }, { x: 420, y: 400 },
+        { x: 450, y: 400 }, { x: 340, y: 400 }, { x: 510, y: 400 },
         { x: 700, y: 400 }, { x: 850, y: 0 }, { x: 950, y: 0 },
         { x: 1050, y: 0 }, { x: 1175, y: 0 }, { x: 1375, y: 0 }
     ];
@@ -133,8 +133,7 @@ function create() {
     game.physics.arcade.enable(player);
     player.body.gravity.y = 600;
     player.body.collideWorldBounds = true;
-    player.health = 3;
-    player.maxhealth = 3;
+
 
     //camera
     game.world.setBounds(0, 0, 5000, 600);
@@ -158,6 +157,7 @@ function FormatInt(int) {
     return formattedNumber;
 }
 
+//Timer of DOom
 function FormatTime(Seconds) {
     let Minutes = (Seconds - Seconds % 60) / 60;
     Seconds = Seconds - Minutes * 60;
