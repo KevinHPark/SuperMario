@@ -80,7 +80,7 @@ function create() {
         { x: 250, y: 500 }, 
         { x: 480, y: 400 }, { x: 480, y: 500 }, 
         { x: 700, y: 320 }, { x: 800, y: 500 }, { x: 700, y: 500 }, 
-        { x: 1015, y: 500 }, { x: 1375, y: 500 }
+        { x: 1015, y: 0 },{ x: 1300, y: 0 }, { x: 1650, y: 0 }, 
     ];
 
     for (var i = 0; i < goomData.length; i++) {
@@ -130,6 +130,16 @@ function create() {
     wallGroup.create(1194, 435, 'stair3');
     wallGroup.create(1236, 475, 'stair2');
     wallGroup.create(1278, 515, 'stair1');
+
+    wallGroup.create(1478, 515, 'stair1');
+    wallGroup.create(1520, 475, 'stair2');
+    wallGroup.create(1562, 435, 'stair3');
+    wallGroup.create(1604, 395, 'stair4');
+
+    wallGroup.create(1730, 395, 'stair4');
+    wallGroup.create(1772, 435, 'stair3');
+    wallGroup.create(1886, 475, 'stair2');
+    wallGroup.create(1938, 515, 'stair1');
 
     //Song
     song.loop = true;
