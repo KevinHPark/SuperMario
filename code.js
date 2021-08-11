@@ -59,7 +59,8 @@ function create() {
         { x: 420, y: 400 },{ x: 465, y: 400 }, { x: 510, y: 400 },
         { x: 620, y: 320 }, { x: 660, y: 320 }, { x: 700, y: 320 }, { x: 740, y: 320 },
         { x: 620, y: 520 }, { x: 660, y: 520 }, { x: 700, y: 520 }, { x: 740, y: 520 },
-        { x: 1015, y: 250 }, { x: 1375, y: 0 }
+        { x: 1015, y: 250 }, { x: 1375, y: 0 },
+        { x: 1650, y: 500 },  { x: 1700, y: 600 }, { x: 1600, y: 400 },
     ];
 
     for (var i = 0; i < coinData.length; i++) {
@@ -80,7 +81,7 @@ function create() {
         { x: 250, y: 500 }, 
         { x: 480, y: 400 }, { x: 480, y: 500 }, 
         { x: 700, y: 320 }, { x: 800, y: 500 }, { x: 700, y: 500 }, 
-        { x: 1015, y: 0 },{ x: 1300, y: 0 }, { x: 1650, y: 0 }, 
+        { x: 1015, y: 500 },{ x: 1300, y: 500 }, { x: 1650, y: 0 }, 
     ];
 
     for (var i = 0; i < goomData.length; i++) {
@@ -138,8 +139,8 @@ function create() {
 
     wallGroup.create(1730, 395, 'stair4');
     wallGroup.create(1772, 435, 'stair3');
-    wallGroup.create(1886, 475, 'stair2');
-    wallGroup.create(1938, 515, 'stair1');
+    wallGroup.create(1816, 475, 'stair2');
+    wallGroup.create(1858, 515, 'stair1');
 
     //Song
     song.loop = true;
