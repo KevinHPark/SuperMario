@@ -104,7 +104,7 @@ function create() {
     wallGroup.enableBody = true;
 
     wallGroup.create(20, 515, 'pipe2');
-    wallGroup.create(500, 515, 'pipe2');
+    wallGroup.create(500, 480, 'pipe2');
 
     //Song
     song.play();
@@ -174,10 +174,10 @@ function update() {
 
     //enemy
     goomGroup.forEach(function (goom) {
-        if (goom.body.velocity === 0) {
+        if (goom.body.velocity.x === 0) {
             goom.body.velocity.x *= -1;
         }
-        console.log(goom.body.velocity,goom.body.position);
+        console.log(goom.body.velocity);
         // let Position = goom.body.position
         // setTimeout(function(){ 
         //     let CurrentPosition = goom.body.position; 
