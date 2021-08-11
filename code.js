@@ -100,8 +100,8 @@ function update() {
     game.physics.arcade.collide(player, coinGroup, collectCoin, null, this);
 
     function collectCoin(player, coin) {
-        kill();
-        
+        coin.kill();
+        score++;
         coinSong.play();
     }
 
