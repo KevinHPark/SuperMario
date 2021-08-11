@@ -101,7 +101,7 @@ function update() {
 
     function collectCoin(player, coin) {
         coin.kill();
-        scoreText = "Coins: " + score++; 
+        scoreText = (20,20, "Coins: " + score++, { fontSize: '20px', fill: '#222222' }); 
         coinSong.play();
     }
 
@@ -122,11 +122,11 @@ function update() {
         player.body.velocity.y = -300;
         jump.play();
     }
+
+    //Follow Cam
     sky.tilePosition.x = game.camera.x * -0.2;
     mountain.tilePosition.x = game.camera.x * -0.3;
-    scoreText.Position.x = game.camera.fixedToCamera
-    // player.animations.stop();
-    // player.frame = 1;
+    scoreText.Position.x = game.camera.fixedToCamera;
 }
 
 // add custom functions (for collisions, etc.)
