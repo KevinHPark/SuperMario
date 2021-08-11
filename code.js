@@ -1,6 +1,6 @@
 var game = new Phaser.Game(1000, 580, Phaser.AUTO, 'superMario', { preload: preload, create: create, update: update });
 
-var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup, score = 0, scoreText, coinSong, enemy, Timer;
+var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup, score = 0, scoreText, coinSong, enemy, Timer, Lives = 3;
 
 var TimeWhenLevelStarted = Date.now()
 
@@ -70,7 +70,7 @@ function create() {
         goom.body.collideWorldBounds = true;
         goom.animations.add('left', [0, 1], 10, true);
         goom.animations.add('right', [2, 3], 10, true);
-        goom.body.velocity.x = Math.random() * 50 + 100; // between 100-150
+        goom.body.velocity.x = Math.random() * 10 + 20; // between 100-150
         if (Math.random() < 0.5) goom.body.velocity.x *= -1; // reverse direction
     }
 
@@ -103,6 +103,10 @@ function create() {
     game.physics.arcade.enable(player);
     player.body.gravity.y = 600;
     player.body.collideWorldBounds = true;
+    player.health = 3;
+    player.maxhealth = 3;
+
+
 
     //camera
     game.world.setBounds(0, 0, 5000, 600);
@@ -116,6 +120,14 @@ function create() {
     player.animations.add('left', [0, 1, 2, 3], 10, true);
     player.animations.add('right', [5, 6, 7, 8], 10, true);
     player.animations.add('turn', [4], 20, true);
+}
+
+function FormatTime(Seconds) {
+    var Minutes = (Seconds - Seconds%60)/60
+    Seconds = Seconds - Minutes*60
+    var Hours = (Minutes - Minutes%60)/60
+    Minutes = Minutes - Hours*60
+    return string.format("%02i",Hours),string.format("%02i", Minutes),string.format("%02i", Seconds)
 }
 
 function update() {
@@ -167,7 +179,8 @@ function update() {
     //Follow Cam
     sky.tilePosition.x = game.camera.x * -0.2;
     mountain.tilePosition.x = game.camera.x * -0.3;
-    Timer.text = "Time : " + ((Date.now()-TimeWhenLevelStarted)/1000)
+    let Hours,Minutes,Seconds = FormatTime((Date.now()-TimeWhenLevelStarted)/1000)
+    Timer.text = "Time : " + Hours + ":" + Minutes + ":" + Seconds
     scoreText.x = game.camera.x;
     Timer.x = game.camera.x+500;
 }
