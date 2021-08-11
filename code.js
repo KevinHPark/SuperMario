@@ -166,14 +166,14 @@ function create() {
     wallGroup.create(1856, 515, 'stair1');
 
     //Last Staircase
-    wallGroup.create(3800, 515, 'stair1');
-    wallGroup.create(3842, 475, 'stair2');
-    wallGroup.create(3884, 435, 'stair3');
-    wallGroup.create(3926, 395, 'stair4');
-    wallGroup.create(3968, 355, 'stair5');
-    wallGroup.create(4010, 315, 'stair6');
-    wallGroup.create(4052, 275, 'stair7');
-    wallGroup.create(4094, 236, 'wall');
+    wallGroup.create(4200, 515, 'stair1');
+    wallGroup.create(4242, 475, 'stair2');
+    wallGroup.create(4284, 435, 'stair3');
+    wallGroup.create(4326, 395, 'stair4');
+    wallGroup.create(4368, 355, 'stair5');
+    wallGroup.create(4410, 315, 'stair6');
+    wallGroup.create(4452, 275, 'stair7');
+    wallGroup.create(4494, 236, 'wall');
 
     //Song
     song.loop = true;
