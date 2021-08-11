@@ -46,9 +46,9 @@ function create() {
         var coin = coinGroup.create(coinData[i].x, coinData[i].y, 'coin');
         coin.body.gravity.y = 400;
         coin.anchor.set(0.5, 0.5);
-        coin.animations.add('spin', [0, 1, 2, 3, 4, 5], 10, true);
-        coin.play();
     }
+    coin.animations.add('spin', [0, 1, 2, 3, 4, 5], 10, true);
+    coin.animations.play('spin');
 
     // PLATFORMS
     platformGroup = game.add.group();
@@ -58,7 +58,10 @@ function create() {
     platformGroup.create(400, 420, 'platform-4');
     platformGroup.create(600, 360, 'platform-5');
 
+    //Song
     song.play();
+    song.loop = true;
+
     // add ground platform
     var ground = platformGroup.create(0, game.world.height - 25, 'floor');
 
