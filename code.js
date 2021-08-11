@@ -36,7 +36,7 @@ function create() {
 
     // add ground platform
     var ground = platformGroup.create(0, game.world.height - 25, 'floor');
-    ground.scale.setTo(10, 1);
+    ground.scale.setTo(10, 4);
 
     platformGroup.setAll('body.immovable', true);
     
