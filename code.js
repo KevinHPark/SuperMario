@@ -98,7 +98,7 @@ function create() {
     wallGroup = game.add.group();
     wallGroup.enableBody = true;
 
-    wallGroup.create(20, 500, 'pipe');
+    wallGroup.create(20, 490, 'pipe');
 
     //Song
     song.play();
@@ -149,8 +149,8 @@ function FormatTime(Seconds) {
     let Hours = (Minutes - Minutes % 60) / 60;
     Minutes = Minutes - Hours * 60;
     Hours = FormatInt(Hours)
-    Minutes = FormatInt(Minutes)
-    Seconds = FormatInt(Seconds)
+    Minutes = FormatInt(Minutes) 
+    Seconds = FormatInt(Math.floor(Seconds))
     return {
         Hours,
         Minutes,
