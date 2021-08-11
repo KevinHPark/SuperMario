@@ -79,7 +79,7 @@ function create() {
     scoreText.setShadow(1, 1, '#000000', 2);
     Timer = game.add.text(500,20, "Time : " + (Date.now()-TimeWhenLevelStarted), {font: '64px Courier', fontSize: '20px', fill: '#222222' })
     Timer.setShadow(1, 1, '#000000', 2); 
-    
+
     // PLATFORMS
     platformGroup = game.add.group();
     platformGroup.enableBody = true;
@@ -121,7 +121,7 @@ function create() {
 function update() {
     game.physics.arcade.collide(player, platformGroup);
     game.physics.arcade.collide(coinGroup, platformGroup);
-    game.physics.arcade.collide(goomGroup, platformGroup);
+    game.physics.arcade.collide(goomGroup, platformGroup, roamingPlatform, null, this);
 
     game.physics.arcade.collide(player, coinGroup, collectCoin, null, this);
 
@@ -130,13 +130,22 @@ function update() {
         if (goom.body.velocity.x < 0) goom.animations.play('left');
         else goom.animations.play('right');
     });
+    function roamingPlatform(enemy, platform) {
+        // if enemy about to go over right or left edge of platform
+        if (enemy.body.velocity.x > 0 && enemy.right > platform.right
+        || enemy.body.velocity.x < 0 && enemy.left < platform.left) {
+            enemy.body.velocity.x *= -1; // reverse direction
+        }
+    }
 
+    //Coin
     function collectCoin(player, coin) {
         coin.kill();
         scoreText.text = "Coins: " + score++ 
         coinSong.play();
-    }
 
+    }
+    //User input
     if (arrowKey.right.isDown) {
         player.body.velocity.x = 200;
         player.animations.play('right');
@@ -158,8 +167,9 @@ function update() {
     //Follow Cam
     sky.tilePosition.x = game.camera.x * -0.2;
     mountain.tilePosition.x = game.camera.x * -0.3;
-
+    Timer.text = "Time : " + ((Date.now()-TimeWhenLevelStarted)/1000)
     scoreText.x = game.camera.x;
+    Timer.x = game.camera.x+500;
 }
 
 // add custom functions (for collisions, etc.)
