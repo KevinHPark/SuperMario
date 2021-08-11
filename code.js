@@ -24,6 +24,7 @@ function preload() {
     game.load.image("stair2", "assets/images/stair2.png");
     game.load.image("stair3", "assets/images/stair3.png");
     game.load.image("stair4", "assets/images/stair4.png");
+    game.load.image("wall", "assets/images/wall3.png");
 
     //Sprite Sheet
     game.load.spritesheet("coin", "assets/images/coin.png", 31, 31);
@@ -115,8 +116,12 @@ function create() {
     platformGroup.create(600, 360, 'platform-5');
 
     platformGroup.create(2000, 400, 'platform-3');
-    platformGroup.create(2100, 340, 'platform-3');
-    platformGroup.create(2300, 280, 'platform-5');
+    platformGroup.create(2200, 340, 'platform-3');
+    platformGroup.create(2400, 280, 'platform-5');
+    platformGroup.create(2600, 300, 'platform-3');
+    platformGroup.create(2650, 260, 'platform-3');
+    platformGroup.create(2600, 220, 'platform-3');
+    platformGroup.create(2650, 180, 'platform-3');
 
     // Walls
     wallGroup = game.add.group();
@@ -126,6 +131,13 @@ function create() {
     wallGroup.create(450, 490, 'pipe2');
     wallGroup.create(1950, 490, 'pipe2');
     wallGroup.create(2050, 490, 'pipe2');
+
+    wallGroup.create(3000, 235, 'wall');
+    wallGroup.create(3042, 235, 'wall');
+    wallGroup.create(3084, 235, 'wall');
+    wallGroup.create(3126, 235, 'wall');
+    wallGroup.create(3168, 235, 'wall');
+    wallGroup.create(3210, 235, 'wall');
 
     //Stairs
     wallGroup.create(900, 515, 'stair1');
