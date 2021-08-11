@@ -1,6 +1,6 @@
 var game = new Phaser.Game(1000, 580, Phaser.AUTO, 'superMario', { preload: preload, create: create, update: update });
 
-var player, arrowKeys, sky, mountain, floor, platformGroup, jump;
+var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup;
 
 function preload() {
     game.load.spritesheet("mario", "assets/images/mario.png", 32, 48);
@@ -12,6 +12,7 @@ function preload() {
     game.load.image("platform-3", "assets/images/platform-3.png");
     game.load.image("platform-4", "assets/images/platform-4.png");
     game.load.image("platform-5", "assets/images/platform-5.png");
+    game.load.spritesheet("coin", "assets/images/coin.png", 32, 32);
 }
 
 function create() {
@@ -25,6 +26,26 @@ function create() {
     sky.fixedToCamera = true;
     mountain.fixedToCamera = true;
     // floor = game.add.sprite(-110, 0, 1912, 110, 'floor');
+
+    //Coins
+    coinGroup = game.add.group();
+    platformGroup.enableBody = true;
+
+    // Do NOT copy-and-paste again (same data)
+    // JSON array listing coin positions
+    var coinData = [
+        { x:75, y:0 }, { x:150, y:0 }, { x:250, y:250 },
+        { x:275, y:0 }, { x:350, y:0 }, { x:450, y:300 },
+        { x:475, y:0 }, { x:537, y:0 }, { x:650, y:0 },
+        { x:700, y:400 }, { x:850, y:0 }, { x:950, y:0 },
+        { x:1050, y:0 }, { x:1175, y:0 }, { x:1375, y:0 }
+        // no comma after last item in array
+    ];
+
+    for (var i = 0; i < coinData.length; i++) {
+        var coin = coinGroup.create(coinData[i].x, coinData[i].y, 'coin');
+
+    }
 
     // PLATFORMS
     platformGroup = game.add.group();
