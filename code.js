@@ -1,8 +1,8 @@
 var game = new Phaser.Game(1000, 580, Phaser.AUTO, 'superMario', { preload: preload, create: create, update: update });
 
-var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup, score = 0, scoreText, coinSong, enemy;
+var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup, score = 0, scoreText, coinSong, enemy, Timer;
 
-var TimeWhenLevelStarted, Timer
+var TimeWhenLevelStarted = Date.now()
 
 function preload() {
     //image
@@ -42,7 +42,6 @@ function create() {
     coinGroup = game.add.group();
     coinGroup.enableBody = true;
 
-    // Do NOT copy-and-paste again (same data)
     // JSON array listing coin positions
     var coinData = [
         { x:75, y:0 }, { x:150, y:0 }, { x:250, y:250 },
@@ -50,7 +49,6 @@ function create() {
         { x:475, y:0 }, { x:537, y:0 }, { x:650, y:0 },
         { x:700, y:400 }, { x:850, y:0 }, { x:950, y:0 },
         { x:1050, y:0 }, { x:1175, y:0 }, { x:1375, y:0 }
-        // no comma after last item in array
     ];
 
     for (var i = 0; i < coinData.length; i++) {
@@ -63,7 +61,7 @@ function create() {
 
     //enemy
     goomGroup = game.add.group()
-    
+    goomGroup.enableBody = true;
 
     for (var i = 0; i < 25; i++) {
         var goom = goomGroup.create(i * 200 + 100, 0, 'goom');
@@ -79,8 +77,9 @@ function create() {
     //Score
     scoreText = game.add.text(20,20, "Coins: " + score, {font: '64px Courier', fontSize: '20px', fill: '#222222' })
     scoreText.setShadow(1, 1, '#000000', 2);
-    // Timer = game.add.text(500,20, "Time : " + (TimeWhenLevelStarted-Date.), {font: '64px Courier', fontSize: '20px', fill: '#222222' })
+    Timer = game.add.text(500,20, "Time : " + (Date.now()-TimeWhenLevelStarted), {font: '64px Courier', fontSize: '20px', fill: '#222222' })
     Timer.setShadow(1, 1, '#000000', 2); 
+    
     // PLATFORMS
     platformGroup = game.add.group();
     platformGroup.enableBody = true;
@@ -122,7 +121,7 @@ function create() {
 function update() {
     game.physics.arcade.collide(player, platformGroup);
     game.physics.arcade.collide(coinGroup, platformGroup);
-    game.physics.arcade.collide(goom, platformGroup);
+    game.physics.arcade.collide(goomGroup, platformGroup);
 
     game.physics.arcade.collide(player, coinGroup, collectCoin, null, this);
 
