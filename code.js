@@ -114,7 +114,9 @@ function create() {
     platformGroup.create(400, 420, 'platform-4');
     platformGroup.create(600, 360, 'platform-5');
 
-    platformGroup.create(2100, 440, 'platform-3');
+    platformGroup.create(2000, 400, 'platform-3');
+    platformGroup.create(2100, 340, 'platform-3');
+    platformGroup.create(2300, 280, 'platform-5');
 
     // Walls
     wallGroup = game.add.group();
@@ -123,6 +125,7 @@ function create() {
     wallGroup.create(20, 515, 'pipe2');
     wallGroup.create(450, 490, 'pipe2');
     wallGroup.create(1950, 490, 'pipe2');
+    wallGroup.create(2050, 490, 'pipe2');
 
     //Stairs
     wallGroup.create(900, 515, 'stair1');
@@ -168,6 +171,7 @@ function create() {
     game.world.setBounds(0, 0, 5000, 600);
     game.camera.follow(player);
     game.add.text(1015, 300, 'You got this!', { fill: 'white' });
+    game.add.text(2100, 500, 'Dont fall!', { fill: 'white' });
 
     //input
     arrowKey = game.input.keyboard.createCursorKeys();
