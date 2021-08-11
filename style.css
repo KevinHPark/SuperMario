@@ -1,5 +1,4 @@
 #superMario {
-    /* optional */
     width: 1000px;
     height: 580px;
     margin: 0 auto;
@@ -25,10 +24,10 @@ h1 {
 h2 {
     font-family: 'Corben', cursive;
     color:rgb(255, 255, 255);
-    text-shadow: 1px 1px 0 #000000, 2px 2px 0 #000000, 3px 3px 0 rgb(0, 0, 0), 4px 4px 0 #000000, 5px 5px 0 rgb(0, 0, 0), 
-    6px 6px 0 rgb(0, 0, 0), 7px 7px 0 rgb(0, 0, 0), 8px 8px 0 rgb(0, 0, 0), 9px 9px 0 rgb(0, 0, 0);
+    text-shadow: 1px 1px 0 #000000, 2px 2px 0 #000000, 3px 3px 0 rgb(0, 0, 0), 4px 4px 0 #000000;
     text-align: center;
 }
 h3 {
+    font-family: 'Corben', cursive;
     text-align: center;
 }
