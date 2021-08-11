@@ -1,6 +1,6 @@
 var game = new Phaser.Game(1000, 580, Phaser.AUTO, 'superMario', { preload: preload, create: create, update: update });
 
-var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup, score = 0, scoreText;
+var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup, score = 0, scoreTex, coinSong;
 
 function preload() {
     game.load.spritesheet("mario", "assets/images/mario.png", 32, 48);
