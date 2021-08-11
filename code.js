@@ -7,7 +7,7 @@ function preload() {
     game.load.image("sky", "assets/images/sky.png");
     game.load.image("mountain", "assets/images/mountain.png");
     game.load.image("floor", "assets/images/floor.png");
-    game.load.audio("jump", "assets/sounds/jump.mp3");
+    game.load.audio("jump", "assets/sounds/Jump.mp3");
 }
 
 function create() {
