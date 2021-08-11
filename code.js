@@ -101,7 +101,7 @@ function update() {
 
     function collectCoin(player, coin) {
         coin.kill();
-        scoreText = "Coins: " + score++; //urmom
+        scoreText = "Coins: " + score++; 
         coinSong.play();
     }
 
@@ -124,7 +124,7 @@ function update() {
     }
     sky.tilePosition.x = game.camera.x * -0.2;
     mountain.tilePosition.x = game.camera.x * -0.3;
-    scoreText.tilePosition = game.camera.fixedToCamera
+    scoreText.Position.x = game.camera.fixedToCamera
     // player.animations.stop();
     // player.frame = 1;
 }
