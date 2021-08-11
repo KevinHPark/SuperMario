@@ -24,7 +24,7 @@ function preload() {
     //Sprite Sheet
     game.load.spritesheet("coin", "assets/images/coin.png", 31, 31);
     game.load.spritesheet("mario", "assets/images/mario.png", 32, 48);
-    game.load.spritesheet("goom", "assets/images/enemy.png", 33, 33);
+    game.load.spritesheet("goom", "assets/images/enemy.png", 32, 32);
 
     //Audio
     game.load.audio("coinSound", "assets/sounds/Coin.mp3");
