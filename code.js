@@ -30,9 +30,9 @@ function create() {
     platformGroup = game.add.group();
     platformGroup.enableBody = true;
 
-    platformGroup.create(200, 520, 'platform-3');
-    platformGroup.create(400, 480, 'platform-4');
-    platformGroup.create(600, 420, 'platform-5');
+    platformGroup.create(200, 480, 'platform-3');
+    platformGroup.create(400, 420, 'platform-4');
+    platformGroup.create(600, 360, 'platform-5');
 
     // add ground platform
     var ground = platformGroup.create(0, game.world.height - 25, 'floor');
