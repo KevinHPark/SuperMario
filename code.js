@@ -12,7 +12,7 @@ function preload() {
     game.load.image("platform-3", "assets/images/platform-3.png");
     game.load.image("platform-4", "assets/images/platform-4.png");
     game.load.image("platform-5", "assets/images/platform-5.png");
-
+    game.load.image("pipe", "assets/images/wall1.png");
 
     //Sprite Sheet
     game.load.spritesheet("coin", "assets/images/coin.png", 31, 31);
@@ -59,10 +59,10 @@ function create() {
         coin.animations.play('spin');
     }
 
-
+        
         //enemy
         goomGroup = game.add.group()
-    goomGroup.enableBody = true;
+        goomGroup.enableBody = true;
 
     for (var i = 0; i < 25; i++) {
         var goom = goomGroup.create(i * 200 + 100, 0, 'goom');
@@ -81,13 +81,20 @@ function create() {
     Timer = game.add.text(500, 20, "Time : " + (Date.now() - TimeWhenLevelStarted), { font: '64px Courier', fontSize: '20px', fill: '#222222' })
     Timer.setShadow(1, 1, '#000000', 2);
 
-    // PLATFORMS
-    platformGroup = game.add.group();
-    platformGroup.enableBody = true;
+    coin.body.gravity.y = 400;
+    coin.anchor.set(0.5, 0.5);
+    coin.animations.add('spin', [0, 1, 2, 3, 4, 5], 10, true);
+    coin.animations.play('spin');
 
-    platformGroup.create(200, 480, 'platform-3');
-    platformGroup.create(400, 420, 'platform-4');
-    platformGroup.create(600, 360, 'platform-5');
+     // PLATFORMS
+     platformGroup = game.add.group();
+     platformGroup.enableBody = true;
+ 
+     platformGroup.create(200, 480, 'platform-3');
+     platformGroup.create(400, 420, 'platform-4');
+     platformGroup.create(600, 360, 'platform-5');
+
+    
 
     //Song
     song.play();
@@ -107,7 +114,7 @@ function create() {
     player.health = 3;
     player.maxhealth = 3;
 
-
+    
 
     //camera
     game.world.setBounds(0, 0, 5000, 600);
@@ -127,16 +134,23 @@ function FormatInt(int) {
     let formattedNumber = int.toLocaleString('en-US', {
         minimumIntegerDigits: 2,
         useGrouping: false
-    })
-    return formattedNumber
+    });
+    return formattedNumber;
 }
 
 function FormatTime(Seconds) {
-    var Minutes = (Seconds - Seconds % 60) / 60
-    Seconds = Seconds - Minutes * 60
-    var Hours = (Minutes - Minutes % 60) / 60
-    Minutes = Minutes - Hours * 60
-    return FormatInt(Hours), FormatInt(Minutes), FormatInt(Seconds)
+    let Minutes = (Seconds - Seconds % 60) / 60;
+    Seconds = Seconds - Minutes * 60;
+    let Hours = (Minutes - Minutes % 60) / 60;
+    Minutes = Minutes - Hours * 60;
+    Hours = FormatInt(Hours)
+    Minutes = FormatInt(Minutes)
+    Seconds = FormatInt(Seconds)
+    return {
+        Hours,
+        Minutes, 
+        Seconds,
+    };
 }
 
 function update() {
@@ -188,8 +202,8 @@ function update() {
     //Follow Cam
     sky.tilePosition.x = game.camera.x * -0.2;
     mountain.tilePosition.x = game.camera.x * -0.3;
-    let Hours, Minutes, Seconds = FormatTime((Date.now() - TimeWhenLevelStarted) / 1000)
-    Timer.text = "Time : " + Hours + ":" + Minutes + ":" + Seconds
+    let FormattedTime = FormatTime((Date.now() - TimeWhenLevelStarted) / 1000);
+    Timer.text = "Time : " + FormattedTime.Hours + ":" + FormattedTime.Minutes + ":" + FormattedTime.Seconds;
     scoreText.x = game.camera.x;
     Timer.x = game.camera.x + 500;
 }
