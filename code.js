@@ -61,7 +61,7 @@ function create() {
         { x: 620, y: 320 }, { x: 660, y: 320 }, { x: 700, y: 320 }, { x: 740, y: 320 },
         { x: 620, y: 520 }, { x: 660, y: 520 }, { x: 700, y: 520 }, { x: 740, y: 520 },
         { x: 1015, y: 150 }, { x: 1230, y: 550 },{ x: 1270, y: 550 },{ x: 1310, y: 550 },
-        { x: 1650, y: 500 },  { x: 1700, y: 600 }, { x: 1600, y: 400 },
+        { x: 1650, y: 200 },  { x: 1700, y: 200 }, { x: 1600, y: 200 },
     ];
 
     for (var i = 0; i < coinData.length; i++) {
@@ -100,9 +100,9 @@ function create() {
 
     //Score
     scoreText = game.add.text(20, 20, "Coins: " + score, { font: '64px Courier', fontSize: '20px', fill: '#ffffff' })
-    scoreText.setShadow(1, 1, '#000000', 2);
+    scoreText.setShadow(1, 1, '#000000', 0);
     Timer = game.add.text(500, 20, "Time : " + (Date.now() - TimeWhenLevelStarted), { font: '64px Courier', fontSize: '20px', fill: '#ffffff' })
-    Timer.setShadow(1, 1, '#000000', 2);
+    Timer.setShadow(1, 1, '#000000', 0);
 
     coin.body.gravity.y = 400;
     coin.anchor.set(0.5, 0.5);
@@ -183,7 +183,7 @@ function create() {
     game.world.setBounds(0, 0, 5000, 600);
     game.camera.follow(player);
     game.add.text(1015, 300, 'You got this!', { fill: 'white' });
-    game.add.text(2900, 300, 'Dont fall!', { fill: 'white' });
+    game.add.text(2850, 300, 'Dont fall!', { fill: 'white' });
 
     //input
     arrowKey = game.input.keyboard.createCursorKeys();
