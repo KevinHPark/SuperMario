@@ -12,7 +12,7 @@ body {
 	position:relative;
     overflow:visible;
   }
-  
+
 .Game {
     font-family: 'Corben', cursive;
     font-size: 3rem;
@@ -22,3 +22,9 @@ body {
     text-align: center;
 }
 
+h1 {
+    text-align: center;
+}
+h2 {
+    text-align: center;
+}

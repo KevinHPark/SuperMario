@@ -114,6 +114,8 @@ function create() {
     platformGroup.create(400, 420, 'platform-4');
     platformGroup.create(600, 360, 'platform-5');
 
+    platformGroup.create(2100, 440, 'platform-3');
+
     // Walls
     wallGroup = game.add.group();
     wallGroup.enableBody = true;
