@@ -104,11 +104,11 @@ function create() {
     wallGroup.enableBody = true;
 
     wallGroup.create(20, 515, 'pipe2');
-    wallGroup.create(500, 480, 'pipe2');
+    wallGroup.create(500, 490, 'pipe2');
 
     //Song
-    song.play();
     song.loop = true;
+    song.play();
 
     // add ground platform
     var ground = platformGroup.create(0, game.world.height - 25, 'floor');
@@ -171,13 +171,18 @@ function update() {
     game.physics.arcade.collide(goomGroup, wallGroup);
     game.physics.arcade.collide(player, wallGroup);
     game.physics.arcade.collide(player, coinGroup, collectCoin, null, this);
-
+    
+    //game.camera.shake(0.02, 250);
     //enemy
     goomGroup.forEach(function (goom) {
         if (goom.body.velocity.x >= -1 && goom.body.velocity <= 1) {
-            goom.body.velocity.x *= -1;
+            goom.body.velocity.x *= -1
+            if (goom.body.velocity.x > 0) {
+                goom.body.velocity.x += (Math.random() * 10 + 20);
+            } else {
+                goom.body.velocity.x -= (Math.random() * 10 + 20);
+            }
         }
-        console.log(goom.body.velocity);
     });
     function roamingPlatform(enemy, platform) {
         // if enemy about to go over right or left edge of platform
