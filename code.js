@@ -52,8 +52,8 @@ function create() {
     // JSON array listing coin positions
     var coinData = [
         { x: 200, y: 350 },
-        { x: 250, y: 350 }, { x: 300, y: 350 }, 
-        { x: 475, y: 0 }, { x: 537, y: 0 }, { x: 650, y: 0 },
+        { x: 250, y: 350 }, { x: 300, y: 350 }, { x: 450, y: 415 },
+        { x: 500, y: 415 }, { x: 550, y: 415 }, { x: 600, y: 415 },
         { x: 700, y: 400 }, { x: 850, y: 0 }, { x: 950, y: 0 },
         { x: 1050, y: 0 }, { x: 1175, y: 0 }, { x: 1375, y: 0 }
     ];
@@ -193,7 +193,8 @@ function update() {
         goom.kill();
         deathSong.play();
         game.camera.shake(0.02, 250);
-        
+        player.kill();
+        song.stop();
     }
 
     //enemy
