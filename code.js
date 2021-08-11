@@ -101,7 +101,7 @@ function update() {
 
     function collectCoin(player, coin) {
         coin.kill();
-        gameText = score++; //urmom
+        scoreText = "Coins: " + score++; //urmom
         coinSong.play();
     }
 
