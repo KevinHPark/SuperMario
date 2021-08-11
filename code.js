@@ -3,9 +3,9 @@ var game = new Phaser.Game(1080, 720, Phaser.AUTO, 'superMario', { preload: prel
 var player, arrowKeys, sky, mountain;
 
 function preload() {
-    game.load.spritesheet("mario", "../assets/images/mario.png", 32, 48);
-    game.load.image("sky", "../assets/images/sky.png");
-    game.load.image("mountain", "../assets/images/mountain.png");
+    game.load.spritesheet("mario", "assets/images/mario.png", 32, 48);
+    game.load.image("sky", "assets/images/sky.png");
+    game.load.image("mountain", "assets/images/mountain.png");
 }
 
 function create() {
