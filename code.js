@@ -58,7 +58,7 @@ function update() {
         player.body.velocity.y = -400;
     }
     sky.tilePosition.x = game.camera.x * -0.2;
-    mountains.tilePosition.x = game.camera.x * -0.3;
+    mountain.tilePosition.x = game.camera.x * -0.3;
     // player.animations.stop();
     // player.frame = 1;
 }
