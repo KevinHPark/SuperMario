@@ -12,8 +12,8 @@ function preload() {
     game.load.image("platform-3", "assets/images/platform-3.png");
     game.load.image("platform-4", "assets/images/platform-4.png");
     game.load.image("platform-5", "assets/images/platform-5.png");
-    
-    
+
+
     //Sprite Sheet
     game.load.spritesheet("coin", "assets/images/coin.png", 31, 31);
     game.load.spritesheet("mario", "assets/images/mario.png", 32, 48);
@@ -23,7 +23,7 @@ function preload() {
     game.load.audio("coinSound", "assets/sounds/Coin.mp3");
     game.load.audio("jump", "assets/sounds/Jump.mp3");
     game.load.audio("song", "assets/sounds/Song.mp3");
-}  
+}
 
 function create() {
     //sound
@@ -44,11 +44,11 @@ function create() {
 
     // JSON array listing coin positions
     var coinData = [
-        { x:75, y:0 }, { x:150, y:0 }, { x:250, y:250 },
-        { x:275, y:0 }, { x:350, y:0 }, { x:450, y:300 },
-        { x:475, y:0 }, { x:537, y:0 }, { x:650, y:0 },
-        { x:700, y:400 }, { x:850, y:0 }, { x:950, y:0 },
-        { x:1050, y:0 }, { x:1175, y:0 }, { x:1375, y:0 }
+        { x: 75, y: 0 }, { x: 150, y: 0 }, { x: 250, y: 250 },
+        { x: 275, y: 0 }, { x: 350, y: 0 }, { x: 450, y: 300 },
+        { x: 475, y: 0 }, { x: 537, y: 0 }, { x: 650, y: 0 },
+        { x: 700, y: 400 }, { x: 850, y: 0 }, { x: 950, y: 0 },
+        { x: 1050, y: 0 }, { x: 1175, y: 0 }, { x: 1375, y: 0 }
     ];
 
     for (var i = 0; i < coinData.length; i++) {
@@ -59,8 +59,9 @@ function create() {
         coin.animations.play('spin');
     }
 
-    //enemy
-    goomGroup = game.add.group()
+
+        //enemy
+        goomGroup = game.add.group()
     goomGroup.enableBody = true;
 
     for (var i = 0; i < 25; i++) {
@@ -75,10 +76,10 @@ function create() {
     }
 
     //Score
-    scoreText = game.add.text(20,20, "Coins: " + score, {font: '64px Courier', fontSize: '20px', fill: '#222222' })
+    scoreText = game.add.text(20, 20, "Coins: " + score, { font: '64px Courier', fontSize: '20px', fill: '#222222' })
     scoreText.setShadow(1, 1, '#000000', 2);
-    Timer = game.add.text(500,20, "Time : " + (Date.now()-TimeWhenLevelStarted), {font: '64px Courier', fontSize: '20px', fill: '#222222' })
-    Timer.setShadow(1, 1, '#000000', 2); 
+    Timer = game.add.text(500, 20, "Time : " + (Date.now() - TimeWhenLevelStarted), { font: '64px Courier', fontSize: '20px', fill: '#222222' })
+    Timer.setShadow(1, 1, '#000000', 2);
 
     // PLATFORMS
     platformGroup = game.add.group();
@@ -96,7 +97,7 @@ function create() {
     var ground = platformGroup.create(0, game.world.height - 25, 'floor');
 
     platformGroup.setAll('body.immovable', true);
-    
+
     game.physics.startSystem(Phaser.Physics.ARCADE);
     player = game.add.sprite(25, 300, "mario");
     player.anchor.set(0.5, 0.5);
@@ -122,12 +123,20 @@ function create() {
     player.animations.add('turn', [4], 20, true);
 }
 
+function FormatInt(int) {
+    let formattedNumber = int.toLocaleString('en-US', {
+        minimumIntegerDigits: 2,
+        useGrouping: false
+    })
+    return formattedNumber
+}
+
 function FormatTime(Seconds) {
-    var Minutes = (Seconds - Seconds%60)/60
-    Seconds = Seconds - Minutes*60
-    var Hours = (Minutes - Minutes%60)/60
-    Minutes = Minutes - Hours*60
-    return string.format("%02i",Hours),string.format("%02i", Minutes),string.format("%02i", Seconds)
+    var Minutes = (Seconds - Seconds % 60) / 60
+    Seconds = Seconds - Minutes * 60
+    var Hours = (Minutes - Minutes % 60) / 60
+    Minutes = Minutes - Hours * 60
+    return FormatInt(Hours), FormatInt(Minutes), FormatInt(Seconds)
 }
 
 function update() {
@@ -145,7 +154,7 @@ function update() {
     function roamingPlatform(enemy, platform) {
         // if enemy about to go over right or left edge of platform
         if (enemy.body.velocity.x > 0 && enemy.right > platform.right
-        || enemy.body.velocity.x < 0 && enemy.left < platform.left) {
+            || enemy.body.velocity.x < 0 && enemy.left < platform.left) {
             enemy.body.velocity.x *= -1; // reverse direction
         }
     }
@@ -153,7 +162,7 @@ function update() {
     //Coin
     function collectCoin(player, coin) {
         coin.kill();
-        scoreText.text = "Coins: " + score++ 
+        scoreText.text = "Coins: " + score++
         coinSong.play();
 
     }
@@ -179,10 +188,10 @@ function update() {
     //Follow Cam
     sky.tilePosition.x = game.camera.x * -0.2;
     mountain.tilePosition.x = game.camera.x * -0.3;
-    let Hours,Minutes,Seconds = FormatTime((Date.now()-TimeWhenLevelStarted)/1000)
+    let Hours, Minutes, Seconds = FormatTime((Date.now() - TimeWhenLevelStarted) / 1000)
     Timer.text = "Time : " + Hours + ":" + Minutes + ":" + Seconds
     scoreText.x = game.camera.x;
-    Timer.x = game.camera.x+500;
+    Timer.x = game.camera.x + 500;
 }
 
 // add custom functions (for collisions, etc.)
