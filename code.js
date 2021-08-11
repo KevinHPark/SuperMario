@@ -20,6 +20,10 @@ function preload() {
     //Wall
     game.load.image("pipe", "assets/images/wall1.png");
     game.load.image("pipe2", "assets/images/wall2.png");
+    game.load.image("stair1", "assets/images/stair1.png");
+    game.load.image("stair2", "assets/images/stair2.png");
+    game.load.image("stair3", "assets/images/stair3.png");
+    game.load.image("stair4", "assets/images/stair4.png");
 
     //Sprite Sheet
     game.load.spritesheet("coin", "assets/images/coin.png", 31, 31);
@@ -114,6 +118,12 @@ function create() {
 
     wallGroup.create(20, 515, 'pipe2');
     wallGroup.create(450, 490, 'pipe2');
+
+    //Stairs
+    wallGroup.create(600, 490, 'stair1');
+    wallGroup.create(642, 490, 'stair2');
+    wallGroup.create(684, 490, 'stair3');
+    wallGroup.create(726, 490, 'stair4');
 
     //Song
     song.loop = true;
