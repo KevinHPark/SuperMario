@@ -1,26 +1,23 @@
-var game = new Phaser.Game(1080, 720, Phaser.AUTO, 'superMario',
-    { preload: preload, create: create, update: update });
-
+var game = new Phaser.Game(1080, 720, Phaser.AUTO, 'superMario', { preload: preload, create: create, update: update });
 
 var player, arrowKeys, sky, mountain;
 
 function preload() {
-    game.load.spritesheet("mario", "assets/images/mario.png", 32, 48);
-    game.load.image("sky", "assets/images/sky.png");
-    game.load.image("mountain", "assets/images/mountain.png");
+    game.load.spritesheet("mario", "../assets/images/mario.png", 32, 48);
+    game.load.image("sky", "../assets/images/sky.png");
+    game.load.image("mountain", "../assets/images/mountain.png");
 }
 
 function create() {
+    //Background
+    sky = game.add.tileSprite(0, 0, 1000, 600, 'sky');
+    
     game.physics.startSystem(Phaser.Physics.ARCADE);
     player = game.add.sprite(25, 300, "mario");
     player.anchor.set(0.5, 0.5);
     game.physics.arcade.enable(player);
     player.body.gravity.y = 600;
     player.body.collideWorldBounds = true;
-
-    //Background
-    sky = game.add.tileSprite(0, 0, 1000, 600, 'sky');
-    mountain = game.add.tileSprite(0, 0, 1000, 600, 'mountain');
 
     //camera
     game.world.setBounds(0, 0, 5000, 600);
