@@ -120,6 +120,7 @@ function create() {
 
     wallGroup.create(20, 515, 'pipe2');
     wallGroup.create(450, 490, 'pipe2');
+    wallGroup.create(1950, 490, 'pipe2');
 
     //Stairs
     wallGroup.create(900, 515, 'stair1');
@@ -139,8 +140,8 @@ function create() {
 
     wallGroup.create(1730, 395, 'stair4');
     wallGroup.create(1772, 435, 'stair3');
-    wallGroup.create(1816, 475, 'stair2');
-    wallGroup.create(1858, 515, 'stair1');
+    wallGroup.create(1814, 475, 'stair2');
+    wallGroup.create(1856, 515, 'stair1');
 
     //Song
     song.loop = true;
