@@ -11,6 +11,7 @@ function preload() {
 function create() {
     //Background
     sky = game.add.tileSprite(0, 0, 1000, 600, 'sky');
+    mountain = game.add.tileSprite(0, 0, 1000, 600, 'mountain');
     
     game.physics.startSystem(Phaser.Physics.ARCADE);
     player = game.add.sprite(25, 300, "mario");
