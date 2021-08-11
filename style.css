@@ -13,7 +13,7 @@ body {
     overflow:visible;
   }
 
-.Game {
+h1 {
     font-family: 'Corben', cursive;
     font-size: 3rem;
     color:rgb(229, 255, 0);
