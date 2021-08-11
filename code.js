@@ -98,7 +98,7 @@ function create() {
      wallGroup = game.add.group();
      wallGroup.enableBody = true;
  
-     wallGroup.create(20, 550, 'pipe');
+     wallGroup.create(20, 530, 'pipe');
 
     //Song
     song.play();
@@ -108,6 +108,7 @@ function create() {
     var ground = platformGroup.create(0, game.world.height - 25, 'floor');
 
     platformGroup.setAll('body.immovable', true);
+    wallGroup.setAll('body.immovable', true);
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     player = game.add.sprite(25, 300, "mario");
@@ -210,7 +211,7 @@ function update() {
     let FormattedTime = FormatTime((Date.now() - TimeWhenLevelStarted) / 1000);
     Timer.text = "Time : " + FormattedTime.Hours + ":" + FormattedTime.Minutes + ":" + FormattedTime.Seconds;
     scoreText.x = game.camera.x;
-    Timer.x = game.camera.x + 500;
+    Timer.x = (game.camera.x + 500)-(Timer.displayWidth()/2);
 }
 
 // add custom functions (for collisions, etc.)
