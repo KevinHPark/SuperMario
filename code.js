@@ -162,7 +162,7 @@ function update() {
     game.physics.arcade.collide(coinGroup, platformGroup);
     game.physics.arcade.collide(goomGroup, platformGroup, roamingPlatform, null, this);
     game.physics.arcade.collide(goomGroup, wallGroup);
-    game.Physics.arcade.collide(player, wallGroup);
+    game.physics.arcade.collide(player, wallGroup);
     game.physics.arcade.collide(player, coinGroup, collectCoin, null, this);
 
     //enemy
