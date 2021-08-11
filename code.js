@@ -1,6 +1,6 @@
 var game = new Phaser.Game(1000, 580, Phaser.AUTO, 'superMario', { preload: preload, create: create, update: update });
 
-var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup;
+var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup, score = 0, scoreText;
 
 function preload() {
     game.load.spritesheet("mario", "assets/images/mario.png", 32, 48);
@@ -50,6 +50,8 @@ function create() {
         coin.animations.play('spin');
     }
 
+    //Score
+    scoreText = add.text(20,20, "Coins: " + score, { fontSize: '20px', fill: '#222222' })
 
     // PLATFORMS
     platformGroup = game.add.group();
@@ -93,6 +95,13 @@ function update() {
     game.physics.arcade.collide(player, platformGroup);
     game.physics.arcade.collide(coinGroup, platformGroup);
 
+    game.physics.arcade.collide(player, coinGroup, collectCoin, null, this);
+
+    function collectCoin(player, coin) {
+        kill(coin)
+        
+    }
+
     if (arrowKey.right.isDown) {
         player.body.velocity.x = 200;
         player.animations.play('right');
@@ -112,6 +121,7 @@ function update() {
     }
     sky.tilePosition.x = game.camera.x * -0.2;
     mountain.tilePosition.x = game.camera.x * -0.3;
+    scoreText.tilePosition = game.camera.fixedToCamera
     // player.animations.stop();
     // player.frame = 1;
 }
