@@ -101,8 +101,6 @@ function create() {
     //Score
     scoreText = game.add.text(50, 20, "Coins: " + score, { font: '64px Courier', fontSize: '20px', fill: '#ffffff' })
     scoreText.setShadow(1, 1, '#000000', 0);
-    scoreText.setShadow(2, 2, '#000000', 0);
-    scoreText.setShadow(3, 3, '#000000', 0);
     Timer = game.add.text(500, 20, "Time : " + (Date.now() - TimeWhenLevelStarted), { font: '64px Courier', fontSize: '20px', fill: '#ffffff' })
     Timer.setShadow(1, 1, '#000000', 0);
 
