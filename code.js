@@ -9,11 +9,14 @@ function preload() {
     game.load.image("floor", "assets/images/floor.png");
     game.load.audio("jump", "assets/sounds/Jump.mp3");
     game.load.audio("song", "assets/sounds/Song.mp3");
+    game.load.image("platform-3", "assets/images/platform-3.png");
+    game.load.image("platform-4", "assets/images/platform-4.png");
+    game.load.image("platform-5", "assets/images/platform-5.png");
 }
 
 function create() {
     //sound
-    jump = game.add.audio('jump', 0.1);
+    jump = game.add.audio('jump', 0.05);
     song = game.add.audio('song', 0.1);
 
     //Background
@@ -26,6 +29,11 @@ function create() {
     // PLATFORMS
     platformGroup = game.add.group();
     platformGroup.enableBody = true;
+
+    platformGroup.create(200, 500, 'platform-3');
+    platformGroup.create(400, 425, 'platform-4');
+    platformGroup.create(600, 350, 'platform-5');
+    platformGroup.create(50, 100, 'platform-3');
 
     // add ground platform
     var ground = platformGroup.create(0, game.world.height - 25, 'floor');
@@ -43,10 +51,7 @@ function create() {
     //camera
     game.world.setBounds(0, 0, 5000, 600);
     game.camera.follow(player);
-    game.add.text(1000, 300, '1000px', { fill: 'white' });
-    game.add.text(2000, 300, '2000px', { fill: 'white' });
-    game.add.text(3000, 300, '3000px', { fill: 'white' });
-    game.add.text(4000, 300, '4000px', { fill: 'white' });
+    game.add.text(1000, 300, 'You got this!', { fill: 'white' });
 
     //input
     arrowKey = game.input.keyboard.createCursorKeys();
@@ -59,7 +64,7 @@ function create() {
 
 function update() {
     game.physics.arcade.collide(player, platformGroup);
-    
+
     if (arrowKey.right.isDown) {
         player.body.velocity.x = 200;
         player.animations.play('right');
