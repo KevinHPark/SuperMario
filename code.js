@@ -46,8 +46,10 @@ function create() {
         var coin = coinGroup.create(coinData[i].x, coinData[i].y, 'coin');
         coin.body.gravity.y = 400;
         coin.anchor.set(0.5, 0.5);
+        coin.animations.add('spin', [0, 1, 2, 3, 4, 5], 10, true);
+        coin.animations.play('spin');
     }
-    coin.animations.add('spin', [0, 1, 2, 3, 4, 5], 10, true);
+
 
     // PLATFORMS
     platformGroup = game.add.group();
@@ -90,8 +92,6 @@ function create() {
 function update() {
     game.physics.arcade.collide(player, platformGroup);
     game.physics.arcade.collide(coinGroup, platformGroup);
-
-    coin.animations.play('spin');
 
     if (arrowKey.right.isDown) {
         player.body.velocity.x = 200;
