@@ -98,7 +98,7 @@ function create() {
     wallGroup = game.add.group();
     wallGroup.enableBody = true;
 
-    wallGroup.create(20, 490, 'pipe');
+    wallGroup.create(20, 498, 'pipe');
 
     //Song
     song.play();
