@@ -12,7 +12,7 @@ function preload() {
     game.load.image("platform-3", "assets/images/platform-3.png");
     game.load.image("platform-4", "assets/images/platform-4.png");
     game.load.image("platform-5", "assets/images/platform-5.png");
-    game.load.spritesheet("coin", "assets/images/coin.png", 32, 32);
+    game.load.spritesheet("coin", "assets/images/coin.png", 31, 31);
 }
 
 function create() {
@@ -29,7 +29,7 @@ function create() {
 
     //Coins
     coinGroup = game.add.group();
-    platformGroup.enableBody = true;
+    coinGroup.enableBody = true;
 
     // Do NOT copy-and-paste again (same data)
     // JSON array listing coin positions
@@ -44,7 +44,9 @@ function create() {
 
     for (var i = 0; i < coinData.length; i++) {
         var coin = coinGroup.create(coinData[i].x, coinData[i].y, 'coin');
-
+        coin.body.gravity.y = 400;
+        coin.anchor.set(0.5, 0.5);
+        coin.body.setBounds.y = 0.5;
     }
 
     // PLATFORMS
@@ -79,10 +81,14 @@ function create() {
     player.animations.add('left', [0, 1, 2, 3], 10, true);
     player.animations.add('right', [5, 6, 7, 8], 10, true);
     player.animations.add('turn', [4], 20, true);
+
+    player.animations.add('spin', [0, 1, 2, 3, 4, 5], 10, true);
 }
 
 function update() {
-    game.physics.arcade.collide(player, platformGroup);
+    game.physics.arcade.collide(player, platformGroup && coinGroup);
+
+
 
     if (arrowKey.right.isDown) {
         player.body.velocity.x = 200;
