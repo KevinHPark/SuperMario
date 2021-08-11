@@ -6,14 +6,15 @@ function preload() {
     game.load.spritesheet("mario", "assets/images/mario.png", 32, 48);
     game.load.image("sky", "assets/images/sky.png");
     game.load.image("mountain", "assets/images/mountain.png");
-    game.load.image("floor", "assets/images/floor.png");
+    // game.load.image("floor", "assets/images/floor.png");
 }
 
 function create() {
     //Background
     sky = game.add.tileSprite(0, 0, 1000, 600, 'sky');
     mountain = game.add.tileSprite(0, 0, 1000, 600, 'mountain');
-    floor = game.add.sprite(-110, 0, 1912, 110, 'floor');
+    sky.fixedToCamera = true;
+    // floor = game.add.sprite(-110, 0, 1912, 110, 'floor');
     
     game.physics.startSystem(Phaser.Physics.ARCADE);
     player = game.add.sprite(25, 300, "mario");
@@ -56,6 +57,8 @@ function update() {
     if (arrowKey.up.isDown) {
         player.body.velocity.y = -400;
     }
+    sky.tilePosition.x = game.camera.x * -0.2;
+    mountains.tilePosition.x = game.camera.x * -0.3;
     // player.animations.stop();
     // player.frame = 1;
 }
