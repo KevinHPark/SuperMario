@@ -1,19 +1,26 @@
 var game = new Phaser.Game(1000, 580, Phaser.AUTO, 'superMario', { preload: preload, create: create, update: update });
 
-var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup, score = 0, scoreTex, coinSong;
+var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup, score = 0, scoreTex, coinSong, enemy;
 
 function preload() {
-    game.load.spritesheet("mario", "assets/images/mario.png", 32, 48);
+    //image
     game.load.image("sky", "assets/images/sky.png");
     game.load.image("mountain", "assets/images/mountain.png");
     game.load.image("floor", "assets/images/floor.png");
-    game.load.audio("jump", "assets/sounds/Jump.mp3");
-    game.load.audio("song", "assets/sounds/Song.mp3");
     game.load.image("platform-3", "assets/images/platform-3.png");
     game.load.image("platform-4", "assets/images/platform-4.png");
     game.load.image("platform-5", "assets/images/platform-5.png");
+    
+    
+    //Sprite Sheet
     game.load.spritesheet("coin", "assets/images/coin.png", 31, 31);
+    game.load.spritesheet("mario", "assets/images/mario.png", 32, 48);
+    game.load.spritesheet("enemy", "assets/images/enemy.png", 31, 31);
+
+    //Audio
     game.load.audio("coinSound", "assets/sounds/Coin.mp3");
+    game.load.audio("jump", "assets/sounds/Jump.mp3");
+    game.load.audio("song", "assets/sounds/Song.mp3");
 }
 
 function create() {
@@ -53,7 +60,7 @@ function create() {
     }
 
     //Score
-    const scoreText = game.add.text(20,20, "Coins: " + score, { fontSize: '20px', fill: '#222222' })
+    scoreText = game.add.text(20,20, "Coins: " + score, { fontSize: '20px', fill: '#222222' })
 
     // PLATFORMS
     platformGroup = game.add.group();
