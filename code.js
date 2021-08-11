@@ -55,10 +55,10 @@ function create() {
     coinGroup.enableBody = true;
 
     var coinData = [
-        { x: 220, y: 350 }, { x: 280, y: 350 }, { x: 420, y: 400 },
-        { x: 465, y: 400 }, { x: 510, y: 400 },
-        { x: 700, y: 400 }, { x: 850, y: 0 }, { x: 950, y: 0 },
-        { x: 1050, y: 0 }, { x: 1175, y: 0 }, { x: 1375, y: 0 }
+        { x: 220, y: 350 }, { x: 280, y: 350 }, 
+        { x: 420, y: 400 },{ x: 465, y: 400 }, { x: 510, y: 400 },
+        { x: 620, y: 320 }, { x: 660, y: 320 }, { x: 700, y: 320 }, { x: 740, y: 320 },
+        { x: 1050, y: 360 }, { x: 1375, y: 0 }
     ];
 
     for (var i = 0; i < coinData.length; i++) {
@@ -78,7 +78,7 @@ function create() {
         { x: 250, y: 350 },
         { x: 250, y: 500 }, 
         { x: 480, y: 400 }, { x: 480, y: 500 }, 
-        { x: 700, y: 400 }, { x: 800, y: 500 }, 
+        { x: 700, y: 320 }, { x: 800, y: 500 }, 
         { x: 1050, y: 500 }, { x: 1375, y: 500 }
     ];
 
@@ -125,10 +125,10 @@ function create() {
     wallGroup.create(984, 435, 'stair3');
     wallGroup.create(1026, 395, 'stair4');
 
-    wallGroup.create(1110, 395, 'stair4');
-    wallGroup.create(1152, 435, 'stair3');
-    wallGroup.create(1194, 475, 'stair2');
-    wallGroup.create(1236, 515, 'stair1');
+    wallGroup.create(1152, 395, 'stair4');
+    wallGroup.create(1194, 435, 'stair3');
+    wallGroup.create(1236, 475, 'stair2');
+    wallGroup.create(1278, 515, 'stair1');
 
     //Song
     song.loop = true;
