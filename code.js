@@ -49,8 +49,8 @@ function create() {
 
     // JSON array listing coin positions
     var coinData = [
-        { x: 100, y: 0 }, { x: 150, y: 0 }, { x: 250, y: 250 },
-        { x: 275, y: 0 }, { x: 350, y: 0 }, { x: 450, y: 300 },
+        { x: 100, y: 0 }, { x: 150, y: 0 }, { x: 200, y: 250 },
+        { x: 250, y: 0 }, { x: 300, y: 0 }, { x: 350, y: 300 },
         { x: 475, y: 0 }, { x: 537, y: 0 }, { x: 650, y: 0 },
         { x: 700, y: 400 }, { x: 850, y: 0 }, { x: 950, y: 0 },
         { x: 1050, y: 0 }, { x: 1175, y: 0 }, { x: 1375, y: 0 }
@@ -103,8 +103,8 @@ function create() {
     wallGroup = game.add.group();
     wallGroup.enableBody = true;
 
-    wallGroup.create(20, 515, 'pipe');
-    wallGroup.create(300, 515, 'pipe2');
+    wallGroup.create(20, 515, 'pipe2');
+    wallGroup.create(500, 515, 'pipe2');
 
     //Song
     song.play();
@@ -174,9 +174,10 @@ function update() {
 
     //enemy
     goomGroup.forEach(function (goom) {
-        if (goom.body.Velocity === 0) {
+        if (goom.body.velocity === 0) {
             goom.body.velocity.x *= -1;
         }
+        console.log(goom.body.velocity,goom.body.position);
         // let Position = goom.body.position
         // setTimeout(function(){ 
         //     let CurrentPosition = goom.body.position; 
