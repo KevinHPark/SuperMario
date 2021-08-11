@@ -1,6 +1,6 @@
 var game = new Phaser.Game(1000, 580, Phaser.AUTO, 'superMario', { preload: preload, create: create, update: update });
 
-var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup, score = 0, scoreTex, coinSong, enemy;
+var player, arrowKeys, sky, mountain, floor, platformGroup, jump, coinGroup, score = 0, scoreText, coinSong, enemy;
 
 function preload() {
     //image
@@ -21,7 +21,7 @@ function preload() {
     game.load.audio("coinSound", "assets/sounds/Coin.mp3");
     game.load.audio("jump", "assets/sounds/Jump.mp3");
     game.load.audio("song", "assets/sounds/Song.mp3");
-}
+}  
 
 function create() {
     //sound
@@ -58,6 +58,10 @@ function create() {
         coin.animations.add('spin', [0, 1, 2, 3, 4, 5], 10, true);
         coin.animations.play('spin');
     }
+
+    //enemy
+    enemyGroup = game.add.group()
+
 
     //Score
     scoreText = game.add.text(20,20, "Coins: " + score, { fontSize: '20px', fill: '#222222' })
