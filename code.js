@@ -94,7 +94,11 @@ function create() {
      platformGroup.create(400, 420, 'platform-4');
      platformGroup.create(600, 360, 'platform-5');
 
-    
+     // Walls
+     wallGroup = game.add.group();
+     wallGroup.enableBody = true;
+ 
+     wallGroup.create(20, 200, 'pipe');
 
     //Song
     song.play();
@@ -157,7 +161,8 @@ function update() {
     game.physics.arcade.collide(player, platformGroup);
     game.physics.arcade.collide(coinGroup, platformGroup);
     game.physics.arcade.collide(goomGroup, platformGroup, roamingPlatform, null, this);
-
+    game.physics.arcade.collide(goomGroup, wallGroup);
+    game.Physics.arcade.collide(player, wallGroup);
     game.physics.arcade.collide(player, coinGroup, collectCoin, null, this);
 
     //enemy
