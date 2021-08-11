@@ -51,9 +51,8 @@ function create() {
     coinGroup.enableBody = true;
 
     var coinData = [
-        { x: 220, y: 350 },
-        { x: 250, y: 350 }, { x: 280, y: 350 }, { x: 420, y: 400 },
-        { x: 450, y: 400 }, { x: 480, y: 400 }, { x: 510, y: 400 },
+        { x: 220, y: 350 }, { x: 280, y: 350 }, { x: 420, y: 400 },
+        { x: 465, y: 400 }, { x: 510, y: 400 },
         { x: 700, y: 400 }, { x: 850, y: 0 }, { x: 950, y: 0 },
         { x: 1050, y: 0 }, { x: 1175, y: 0 }, { x: 1375, y: 0 }
     ];
@@ -192,14 +191,8 @@ function update() {
 
     //enemy
     goomGroup.forEach(function (goom) {
-        if (goom.body.velocity.x >= -1 && goom.body.velocity <= 1) {
-            goom.body.velocity.x *= -1
-            if (goom.body.velocity.x > 0) {
-                goom.body.velocity.x += (Math.random() * 10 + 20);
-            } else {
-                goom.body.velocity.x -= (Math.random() * 10 + 20);
-            }
-        }
+        if (goom.body.velocity.x < 0) goom.animations.play('left');
+        else goom.animations.play('right');
     });
     function roamingPlatform(enemy, platform) {
         if (enemy.body.velocity.x > 0 && enemy.right > platform.right
