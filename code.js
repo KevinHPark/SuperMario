@@ -14,6 +14,7 @@ function create() {
     sky = game.add.tileSprite(0, 0, 1000, 600, 'sky');
     mountain = game.add.tileSprite(0, 0, 1000, 600, 'mountain');
     sky.fixedToCamera = true;
+    mountain.fixedToCamera = true;
     // floor = game.add.sprite(-110, 0, 1912, 110, 'floor');
     
     game.physics.startSystem(Phaser.Physics.ARCADE);
