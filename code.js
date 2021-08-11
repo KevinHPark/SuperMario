@@ -53,7 +53,7 @@ function create() {
     }
 
     //Score
-    scoreText = game.add.text(20,20, "Coins: " + score, { fontSize: '20px', fill: '#222222' })
+    const scoreText = game.add.text(20,20, "Coins: " + score, { fontSize: '20px', fill: '#222222' })
 
     // PLATFORMS
     platformGroup = game.add.group();
@@ -101,7 +101,7 @@ function update() {
 
     function collectCoin(player, coin) {
         coin.kill();
-        scoreText = (20,20, "Coins: " + score++, { fontSize: '20px', fill: '#222222' }); 
+        scoreText.text = "Coins: " + score++ 
         coinSong.play();
     }
 
@@ -127,7 +127,7 @@ function update() {
     sky.tilePosition.x = game.camera.x * -0.2;
     mountain.tilePosition.x = game.camera.x * -0.3;
 
-    scoreText.setX(game.camera.x);
+    scoreText.x = game.camera.x;
 }
 
 // add custom functions (for collisions, etc.)
