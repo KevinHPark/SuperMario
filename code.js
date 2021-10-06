@@ -51,7 +51,7 @@ function create() {
     song = game.add.audio('song', 0.1);
     coinSong = game.add.audio('coinSound', 0.05);
     deathSong = game.add.audio('death', 0.1);
-    winSound= game.add.audio('win', 0.1);
+    winSound = game.add.audio('win', 0.1);
 
     //Background
     sky = game.add.tileSprite(0, 0, 1000, 600, 'sky');
@@ -316,5 +316,7 @@ function update() {
     let FormattedTime = FormatTime((Date.now() - TimeWhenLevelStarted) / 1000);
     Timer.text = "Time : " + FormattedTime.Hours + ":" + FormattedTime.Minutes + ":" + FormattedTime.Seconds;
     scoreText.x = game.camera.x;
+
+    //Timer
     Timer.x = (game.camera.x + 500) - (Timer.width / 2);
 }
